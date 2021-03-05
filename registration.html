@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/login.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/registration.css">
 </head>
 <body>
 <div class="grid-container">
@@ -14,15 +14,24 @@
   <a href="premade.html"><div class="navi">Pre-made workouts</div></a>
   <a href="categories.html"><div class="navi">Categories</div></a>
   <a href="mypage.html"><div class="navi">My page</div></a>
+  <a href="login.html"><div class="navi">Login</div></a>
 </div>
 <!-- contact form -->
-<section class="section-form">
+<section class="registration-form">
     <div class="row">
-        <h2>Login Form</h2>
+        <h2>Sign up</h2>
     </div>
     <div class="row">
-        <form method="post" action="#" class="login-form">
-        <!-- inserting username, password -->
+        <form method="post" action="#" class="registration-form">
+        <!-- inserting first name, second name, username, password and confirm password -->
+        <div class="row">
+            <label for="name">First name</label>
+            <input type="text" name="name" id="name" placeholder="Enter first name" required>
+        </div>
+        <div class="row">
+            <label for="name">Last name</label>
+            <input type="text" name="name" id="name" placeholder="Enter last name" required>
+        </div>
         <div class="row">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Enter username" required>
@@ -32,10 +41,7 @@
             <input type="password" name="email" id="password" placeholder="Enter password" required>
         </div>
         <div class="row">
-            <input type="submit" value="Login">
-        </div>
-        <div class="row">
-            <input type="button" value="Sign up" href="registration.html>
+            <input type="submit" value="Sign up">
         </div>
         </form>    
     </div>
