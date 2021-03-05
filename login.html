@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/main.css">
+        <link rel="stylesheet" type="text/css" href="resources/css/login.css">
 </head>
 <body>
 <div class="grid-container">
@@ -16,5 +16,27 @@
   <a href="mypage.html"><div class="navi">My page</div></a>
   <a href="login.html"><div class="navi">Login</div></a>
 </div>
-    </body>
+<!-- contact form -->
+<section class="section-form">
+    <div class="row">
+        <h2>Contact me</h2>
+    </div>
+    <div class="row">
+        <form method="post" action="#" class="contact-form">
+        <!-- inserting username, password -->
+        <div class="row">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Your username" required>
+        </div>
+        <div class="row">
+            <label for="email">Password</label>
+            <input type="email" name="email" id="email" placeholder="Your email" required>
+        </div>
+        <div class="row">
+            <input type="submit" value="Login">
+        </div>
+        </form>    
+    </div>
+</section>
+</body>
 </html>
