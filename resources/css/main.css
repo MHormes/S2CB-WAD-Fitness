@@ -17,32 +17,40 @@ body {
     font-size: 35px;
 }
 
-
 .grid-container {
     display: grid;
     grid-template-areas: 
-        'header header header header'
-        'menu menu menu menu'
-        'subheader subheader subheader subheader'
-        'content content content content';
+        'header header header header header';
+    grid-template-rows: auto;
     grid-gap: 10px;
     background-color: #2196F3;
     padding: 10px;
 }
 
-.item1{
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-areas:
+        'header header header header';
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.grid-container2 > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+.header{
     grid-area: header;
 }
-
-.menu{
-    grid-area: menu;
-}
-
-.subheader{
-    grid-area: subheader;
-}
-
-.content{
-    grid-area: content;
-}
-
