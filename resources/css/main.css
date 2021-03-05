@@ -37,7 +37,7 @@ body {
     background-color: #2F4858;
     color: #86BBD8;
     padding: 20px;
-    font-size: 30px;
+    font-size: 3vw;
 
 }
 
@@ -46,25 +46,22 @@ body {
     background-color: #2F4858;
     color: #86BBD8;
     padding: 30px;
-    font-size: 35px;
+    font-size: 5vw;
 }
 
 .navi{
     background-color: #2F4858;
     color: #86BBD8;
     padding: 25px;
-    font-size: 20px;
+    font-size: 2vw;
 }
 
 .menu{
     background-color: #2F4858;
     color: #86BBD8;
     padding: 25px;
-    font-size: 20px;
 }
 
-menuPic{
-    padding: inherit;
-    width: 50px;
+a {
+    text-decoration: none;
 }
-
