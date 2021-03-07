@@ -50,16 +50,17 @@ body {
 }
 
 .navi{
+    grid-area: navi;
     background-color: #2F4858;
     color: #86BBD8;
     padding: 25px;
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 
 .menu{
     background-color: #2F4858;
     color: #86BBD8;
-    padding: 40px;
+    padding: 1vw;
 }
 
 a {
@@ -67,4 +68,61 @@ a {
 }
 
 @media screen and (max-width: 600px){
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'header header'
+            'navi navi'
+            'navi navi'
+            'navi navi';
+        grid-gap: 10px;
+        background-color: #33658A;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .grid-container2 {
+        display: grid;
+        grid-template-areas:
+            'subheader subheader'
+            'menus menus'
+            'menus menus'
+            'menus menus';
+        grid-gap: 10px;
+        background-color: #33658A;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .subheader{
+        grid-area: subheader;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 20px;
+        font-size: 3vw;
+
+    }
+
+    .header{
+        grid-area: header;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 30px;
+        font-size: 4vw;
+    }
+
+    .navi{
+        grid-area: navi;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 15px;
+        font-size: 2.5vw;
+    }
+
+    .menu{
+        grid-area: menus;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 15px;
+    }
 }

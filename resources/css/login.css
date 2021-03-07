@@ -35,12 +35,13 @@ body {
     background-color: #2F4858;
     color: #86BBD8;
     padding: 25px;
-    font-size: 1vw;
+    font-size: 1.5vw;
 }
 
 .row {
-    max-width: 1140px;
+    max-width: 500px;
     margin: 0 auto;
+    display: inline;
 }
 
 section {
@@ -83,7 +84,7 @@ input[type=button] {
   background-color: #FFFFFF;
   color: black;
   padding: 10px;
-  margin: auto;
+  margin: 5px auto;
   border-radius: 3px;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -100,4 +101,40 @@ h2 {
     margin-bottom: 30px;
     letter-spacing: 2px;
     color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px){
+    .grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'navi navi'
+        'navi navi';
+    grid-gap: 10px;
+    background-color: #33658A;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.header{
+    grid-area: header;
+    background-color: #2F4858;
+    color: #86BBD8;
+    padding: 30px;
+    font-size: 4vw;
+}
+
+
+.navi{
+    grid-area: navi;
+    background-color: #2F4858;
+    color: #86BBD8;
+    padding: 15px;
+    font-size: 2vw;
+}
 }
