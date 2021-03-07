@@ -113,7 +113,7 @@ a{
     text-decoration: none;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 750px){
     .grid-container {
         display: grid;
         grid-template-areas:
@@ -146,5 +146,21 @@ a{
 
     h2{
         font-size: 4vw;
+    }
+
+    input[type=button]{
+        font-size: 2vw;
+        float: none;
+    }
+
+    input[type=submit]{
+        font-size: 2vw;
+    }
+
+    input[type=password],
+    input[type=text],
+    select,
+    textarea{
+        font-size: 2vw;
     }
 }
