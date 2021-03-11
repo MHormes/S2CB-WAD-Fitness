@@ -1,10 +1,10 @@
 <?php
 
-class Person{
+class User{
 
     private $firstname;
     private $secondname;
-    public $username;
+    private $username;
     private $password;
     private $email;
 
@@ -22,11 +22,6 @@ class Person{
 
     public function WelMessage(){
         return "Welkom $this->username";
-    }
-
-    public function NewUser(){
-        $user = new User();
-        echo $user->RegMessage();
     }
 }
 

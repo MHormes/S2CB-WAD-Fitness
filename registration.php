@@ -6,9 +6,7 @@
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
         <link rel="stylesheet" type="text/css" href="resources/css/registration.css">
-        <?php
-            include "php/User.php"
-        ?>
+
 
 
     </head>
@@ -28,7 +26,7 @@
                 <h2>Sign up</h2>
             </div>
             <div class="row">
-                <form id="register" method="post" action="php/User->NewUser()" class="registration-form">
+                <form id="register" method="post" action="registration.php" class="registration-form">
                     <!-- inserting first name, second name, username, password and confirm password -->
                     <div class="row">
                         <label for="fName">First name</label>
@@ -51,9 +49,32 @@
                         <input type="text" name="email" id="email" placeholder="Enter email" required>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Sign up">
+                        <input type="submit" value="Sign up" name="btnRegister">
                     </div>
                 </form>
+                <?php
+                function CreateAccount()
+
+                {
+                    include "php/User.php";
+
+                $fName = $_POST["fName"];
+                $lName = $_POST["lName"];
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+                $email = $_POST['email'];
+                $user = new User($fName, $lName, $username, $password, $email);
+
+
+                }
+
+                if(isset($_POST['btnRegister']))
+                {
+                CreateAccount();
+                header('Location: login.html');
+                echo $user->RegMessage();
+                }
+                ?>
             </div>
         </section>
     </body>
