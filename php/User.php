@@ -2,13 +2,15 @@
 
 class Person{
 
-    public $username;
-    private $password;
     private $firstname;
     private $secondname;
+    public $username;
+    private $password;
     private $email;
 
-    public function __construct($username, $password, $email){
+    public function __construct($firstname, $secondname, $username, $password, $email){
+        $this->firstname = $firstname;
+        $this->secondname = $secondname;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
@@ -20,6 +22,11 @@ class Person{
 
     public function WelMessage(){
         return "Welkom $this->username";
+    }
+
+    public function NewUser(){
+        $user = new User();
+        echo $user->RegMessage();
     }
 }
 
