@@ -53,10 +53,12 @@
                     </div>
                 </form>
                 <?php
+
+
                 function CreateAccount()
 
                 {
-                    include "php/User.php";
+                include "php/User.php";
 
                 $fName = $_POST["fName"];
                 $lName = $_POST["lName"];
@@ -64,15 +66,14 @@
                 $password = $_POST["password"];
                 $email = $_POST['email'];
                 $user = new User($fName, $lName, $username, $password, $email);
-
-
+                echo $user->RegMessage();
                 }
 
                 if(isset($_POST['btnRegister']))
                 {
                 CreateAccount();
                 header('Location: login.html');
-                echo $user->RegMessage();
+
                 }
                 ?>
             </div>
