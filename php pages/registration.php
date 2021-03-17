@@ -18,7 +18,7 @@
             <a href="premade.html"><div class="navi">Pre-made workouts</div></a>
             <a href="categories.html"><div class="navi">Categories</div></a>
             <a href="mypage.html"><div class="navi">My page</div></a>
-            <a href="login.html"><div class="navi">Login</div></a>
+            <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <!-- contact form -->
         <section class="registration-form">
