@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
-        <link rel="stylesheet" type="text/css" href="resources/css/registration.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/registration.css">
 
 
 
@@ -14,10 +14,10 @@
 
         <div class="grid-container">
             <div class="header"><href=index.html/>AM Fitness</div>
-            <a href="contact.html"><div class="navi">Contact</div></a>
-            <a href="premade.html"><div class="navi">Pre-made workouts</div></a>
-            <a href="categories.html"><div class="navi">Categories</div></a>
-            <a href="mypage.html"><div class="navi">My page</div></a>
+            <a href="contact.php"><div class="navi">Contact</div></a>
+            <a href="premade.php"><div class="navi">Pre-made workouts</div></a>
+            <a href="categories.php"><div class="navi">Categories</div></a>
+            <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <!-- contact form -->
@@ -56,7 +56,7 @@
                 <?php
                 function CreateAccount()
                 {
-                    include 'includes/autoload.inc.php';
+                    include '../includes/autoload.inc.php';
                     $username = 'dbi459847';
                     $password = 'fitness';
                     
