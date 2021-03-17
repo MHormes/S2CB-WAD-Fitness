@@ -45,25 +45,36 @@
                     include '../includes/autoload.inc.php';
                     $username = 'dbi459847';
                     $password = 'fitness';
+                    $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
                     
-                    try{
-                        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-                        $sql = 'SELECT * FROM user WHERE UserName = :username AND Password = :password';
-                        $sth = $conn->prepare($sql);
-                        $sth->execute([':username' => $_POST['username']]);
-                        $sth->execute([':password' => $_POST['password']]);
+                    session_start();
+                    $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
+                    $sth = $conn->prepare($sql);
                         
-                        $conn= null;
-                    }catch(PDOException $e){
-                        echo $e->getMessage();
-                    }
-                }
+                    $sth->execute(
+                        array(
+                        ':username' => $_POST["username"],
+                        ':password' => $_POST["password"]
+                        )
+                    );
+                    $users = $sth->fetchAll();
+                    $count = $sth->rowCount();
 
+                    if ($count > 0) {
+                        $_SESSION['loggedin'] = TRUE;
+                        $_SESSION['Password'] = $_POST['Password'];
+                        $_SESSION['Username'] = $_POST["Username"];
+                        header('Location: categories.php');
+                        } 
+                    else {
+                        $message = "User not found";
+                        echo $message;
+                        }
+                }
+                        
                 if(isset($_POST['btnLogin']))
                 {
-                    CreateAccount();
-                    header('Location: categories.html');
-
+                    loginAccount();
                 }
                 ?>
             </div>
