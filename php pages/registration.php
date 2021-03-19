@@ -1,3 +1,30 @@
+<?php
+function CreateAccount()
+{
+    include '../includes/autoload.inc.php';
+    $username = 'dbi459847';
+    $password = 'fitness';
+
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $sql = 'INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password)';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email']]);
+
+        $conn= null;
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+if(isset($_POST['btnRegister']))
+{
+    CreateAccount();
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,9 +33,6 @@
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
         <link rel="stylesheet" type="text/css" href="../resources/css/registration.css">
-
-
-
     </head>
     <body>
 
@@ -52,33 +76,6 @@
                         <input type="submit" value="Sign up" name="btnRegister">
                     </div>
                 </form>
-                
-                <?php
-                function CreateAccount()
-                {
-                    include '../includes/autoload.inc.php';
-                    $username = 'dbi459847';
-                    $password = 'fitness';
-                    
-                    try{
-                        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-                        $sql = 'INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password)';
-                        $sth = $conn->prepare($sql);
-                        $sth->execute([':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email']]);
-                        
-                        $conn= null;
-                    }catch(PDOException $e){
-                        echo $e->getMessage();
-                    }
-                }
-
-                if(isset($_POST['btnRegister']))
-                {
-                    CreateAccount();
-                    header('Location: login.php');
-
-                }
-                ?>
             </div>
         </section>
     </body>
