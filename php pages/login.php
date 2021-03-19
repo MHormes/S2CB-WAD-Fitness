@@ -64,7 +64,7 @@
                         $_SESSION['loggedin'] = TRUE;
                         $_SESSION['Password'] = $_POST['Password'];
                         $_SESSION['Username'] = $_POST["Username"];
-                        header('Location: categories.php');
+                        header('Location: mypage.php');
                         } 
                     else {
                         $message = "User not found";
