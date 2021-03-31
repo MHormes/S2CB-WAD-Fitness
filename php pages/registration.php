@@ -2,9 +2,7 @@
 function CreateAccount()
 {
     session_start();
-    include '../includes/autoload.inc.php';
-    $username = 'dbi459847';
-    $password = 'fitness';
+    include '../includes/connection_template.php';
 
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
