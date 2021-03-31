@@ -1,6 +1,7 @@
 <?php
 function CreateAccount()
 {
+    session_start();
     include '../includes/autoload.inc.php';
     $username = 'dbi459847';
     $password = 'fitness';
@@ -15,12 +16,13 @@ function CreateAccount()
     }catch(PDOException $e){
         echo $e->getMessage();
     }
+    $_SESSION['UsernameReg'] = $_POST["fname"];
+    header('Location: login.php');
 }
 
 if(isset($_POST['btnRegister']))
 {
     CreateAccount();
-    header('Location: login.php');
     exit();
 }
 ?>

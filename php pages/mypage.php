@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,5 +19,13 @@
             <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
+        <?php
+        if(isset($_SESSION["Username"])){
+            echo "Welcome to your own page, " . $_SESSION["Username"]; 
+        }
+        else{
+            echo "To see your page please log-in";
+        }
+        ?>
     </body>
 </html>

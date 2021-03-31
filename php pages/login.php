@@ -1,3 +1,48 @@
+<?php
+session_start();
+function loginAccount()
+{
+    include '../includes/autoload.inc.php';
+    $username = 'dbi459847';
+    $password = 'fitness';
+
+    try{
+
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
+        $sth = $conn->prepare($sql);
+
+        $sth->execute(
+            array(
+                ':username' => $_POST["username"],
+                ':password' => $_POST["password"]
+            )
+        );
+        $users = $sth->fetchAll();
+        $count = $sth->rowCount();
+
+        if ($count > 0) {
+            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['Password'] = $_POST["password"];
+            $_SESSION['Username'] = $_POST["username"];
+            $message = null;
+            header('Location: mypage.php');
+        } 
+        else {
+            $message = "User not found";
+        }
+
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+if(isset($_POST['btnLogin']))
+{
+    loginAccount();
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,46 +81,17 @@
                     </div>
                     <a href="registration.php"><div class="row">
                         <input type="button" value="Sign up">
-                    </div></a>
+                        </div></a>
                 </form>
-                
-                <?php
-                function loginAccount()
-                {
-                    include '../includes/autoload.inc.php';
-                    $username = 'dbi459847';
-                    $password = 'fitness';
-                    $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-                    
-                    session_start();
-                    $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
-                    $sth = $conn->prepare($sql);
-                        
-                    $sth->execute(
-                        array(
-                        ':username' => $_POST["username"],
-                        ':password' => $_POST["password"]
-                        )
-                    );
-                    $users = $sth->fetchAll();
-                    $count = $sth->rowCount();
 
-                    if ($count > 0) {
-                        $_SESSION['loggedin'] = TRUE;
-                        $_SESSION['Password'] = $_POST['Password'];
-                        $_SESSION['Username'] = $_POST["Username"];
-                        header('Location: mypage.php');
-                        } 
-                    else {
-                        $message = "User not found";
-                        echo $message;
-                        }
+                <?php
+                if(isset($_SESSION["UsernameReg"])){
+                    echo "Thank you for creating an account. You can now login using the password for account:" . $_SESSION['UsernameReg'];
                 }
-                        
-                if(isset($_POST['btnLogin']))
-                {
-                    loginAccount();
+                if(isset($message)){
+                    echo $message;
                 }
+                
                 ?>
             </div>
         </section>
