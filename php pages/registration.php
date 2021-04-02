@@ -14,7 +14,7 @@ function CreateAccount()
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-    $_SESSION['UsernameReg'] = $_POST["fname"];
+    $_SESSION['UsernameReg'] = $_POST["username"];
     header('Location: login.php');
 }
 
