@@ -7,13 +7,15 @@ class User{
     private $username;
     private $password;
     private $email;
+    private $role;
 
-    public function __construct($firstname, $secondname, $username, $password, $email){
+    public function __construct($firstname, $secondname, $username, $password, $email, $role){
         $this->firstname = $firstname;
         $this->secondname = $secondname;
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
+        $this->role = $role;
     }
 
     public function RegMessage(){
