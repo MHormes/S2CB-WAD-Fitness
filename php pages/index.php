@@ -1,3 +1,26 @@
+<?php
+session_start();
+GetallCategories();
+
+function GetAllCategories()
+{
+    include '../includes/connection_template.php';
+    try{
+
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $sql = 'SELECT DISTINCT MuscleTrained FROM exercise';
+        $sth = $conn->prepare($sql);
+        $sth->execute();
+        
+        $categories = $sth->fetch_all();
+        echo $categories;
+
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
