@@ -31,10 +31,15 @@ $categories = GetAllCategories();
         </div>
         <div class="grid-container2">
             <div class="subheader">Categories</div>
-            <a href=""><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[0]->MuscleTrained; ?></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%;"/><?php echo $categories[1]->MuscleTrained; ?></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[2]->MuscleTrained; ?></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[3]->MuscleTrained; ?></div></a>
+            
+            <!--Populate the index page with a set of 4 categories-->
+            <?php
+            for($i=0; $i<=3; $i++)
+            { ?>
+            <a href="selectedCategorie.php"><div class="menu" onClick='<?php setcookie("chosenCategorie", $catName); ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php $catName=$categories[$i]->MuscleTrained; echo $catName; ?></div></a>
+            <?php
+            }
+            ?>
         </div>
     </body>
 </html>

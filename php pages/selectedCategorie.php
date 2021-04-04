@@ -1,6 +1,8 @@
 <?php
-session_start();
+include '../includes/get_categories_template.php';
+$categories = GetAllCategories();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,13 +21,13 @@ session_start();
             <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
-        <?php
-        if(isset($_SESSION["Username"])){
-            echo "Welcome to your own page, " . $_SESSION["Username"]; 
-        }
-        else{
-            echo "To see your page please log-in";
-        }
-        ?>
+        <div class="grid-container2">
+            <div class="subheader"><?php echo "Showing all exersices for categorie:" . $_COOKIE["chosenCategorie"]?>  </div>
+            
+            <!--Populate the specific categorie page with all the exersices for this categorie-->
+            <?php
+            
+            ?>
+        </div>
     </body>
 </html>

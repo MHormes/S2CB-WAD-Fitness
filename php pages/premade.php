@@ -9,12 +9,20 @@
     </head>
     <body>
         <div class="grid-container">
-            <div class="header"><href=index.php/>AM Fitness</div>
+            <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
             <a href="contact.php"><div class="navi">Contact</div></a>
             <a href="premade.php"><div class="navi">Pre-made workouts</div></a>
             <a href="categories.php"><div class="navi">Categories</div></a>
             <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
+        </div>
+        
+        <div class="grid-container2">
+            <div class="subheader">Pre-made workouts</div>
+            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
+            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%;"/></div></a>
+            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
+            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
         </div>
     </body>
 </html>
