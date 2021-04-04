@@ -4,7 +4,6 @@ function loginAccount()
 {
     include '../includes/connection_template.php';
     try{
-
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
         $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
         $sth = $conn->prepare($sql);
