@@ -37,7 +37,7 @@ if(isset($_POST['btnRegister']))
     <body>
 
         <div class="grid-container">
-            <div class="header"><href=index.html/>AM Fitness</div>
+            <div class="header"><href=index.php/>AM Fitness</div>
             <a href="contact.php"><div class="navi">Contact</div></a>
             <a href="premade.php"><div class="navi">Pre-made workouts</div></a>
             <a href="categories.php"><div class="navi">Categories</div></a>
