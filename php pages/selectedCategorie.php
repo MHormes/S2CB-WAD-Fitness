@@ -1,6 +1,8 @@
 <?php
 include '../includes/get_categories_template.php';
-$categories = GetAllCategories();
+//include '../includes/get_exercise_template.php';
+$catName= ReturnChosenCategorie();
+//$excercises = GetAllExersices($catName);
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +24,9 @@ $categories = GetAllCategories();
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exersices for categorie:" . $_COOKIE["chosenCategorie"]?>  </div>
+            <div class="subheader"><?php echo "Showing all exersices for categorie:" . $catName; ?>  </div>
             
-            <!--Populate the specific categorie page with all the exersices for this categorie-->
+            <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
             
             ?>

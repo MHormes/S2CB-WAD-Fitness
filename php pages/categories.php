@@ -27,8 +27,9 @@ $categories = GetAllCategories();
             <!--Populate the categorie page with all the categories-->
             <?php
             foreach($categories as $value){
+                $catName = $value->MuscleTrained;
                 ?>
-            <a href="selectedCategorie.php"><div class="menu" onClick='<?php setcookie("chosenCategorie", $catName); ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php $catName=$value->MuscleTrained; echo $catName ?></div></a>
+            <a href="selectedCategorie.php"><div class="menu" onClick='<?php SaveChosenCategorie($catName)?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $catName ?></div></a>
             <?php
             }
             ?>

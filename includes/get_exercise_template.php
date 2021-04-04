@@ -1,12 +1,11 @@
 <?php
-$catName;
-function GetAllCategories()
+function GetAllExersices($catName)
 {
     include '../includes/connection_template.php';
     try{
 
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-        $sql = 'SELECT DISTINCT MuscleTrained FROM exercise';
+        $sql = 'SELECT * FROM exercise WHERE MuscleTrained = :catName';
 
         $query = $conn->query($sql);
         $categories = $query->fetchAll(PDO::FETCH_OBJ);
@@ -15,15 +14,5 @@ function GetAllCategories()
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-}
-
-function SaveChosenCategorie($chosenCat){
-    global $catName;
-    $catName = $chosenCat;
-}
-
-function ReturnChosenCategorie(){
-    global $catName;
-    return $catName;
 }
 ?>
