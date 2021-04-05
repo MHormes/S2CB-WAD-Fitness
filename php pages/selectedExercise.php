@@ -1,8 +1,5 @@
 <?php
-include '../includes/get_categories_template.php';
-include '../includes/get_exercise_template.php';
-$catName = $_COOKIE["catName"];
-$excercises = GetAllExersices();
+$exerciseName = 'test';
 ?>
 
 <!DOCTYPE html>
@@ -24,15 +21,11 @@ $excercises = GetAllExersices();
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exersices for categorie:" . $catName; ?>  </div>
+            <div class="subheader"><?php echo "Showing page for exercise:" . $exerciseName; ?>  </div>
             
-            <!--Populate the specific categorie page with all the exercises for this categorie-->
+            <!--Show information for exersice-->
             <?php
-            foreach($excercises as $value){
-                ?>
-            <a href="selectedExercise.php"><div class="menu" onClick='<?php  ?>'><img src="../resources/pictures/exercise.jpg" style="width: 100%"/><?php echo $value->Name; ?></div></a>
-            <?php
-            }
+
             ?>
         </div>
     </body>

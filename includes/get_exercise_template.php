@@ -1,16 +1,16 @@
 <?php
-function GetAllExersices($catName)
+function GetAllExersices()
 {
     include '../includes/connection_template.php';
     try{
 
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-        $sql = 'SELECT * FROM exercise WHERE MuscleTrained = :catName';
+        $sql = 'SELECT * FROM exercise';
 
         $query = $conn->query($sql);
-        $categories = $query->fetchAll(PDO::FETCH_OBJ);
+        $exercises = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $categories;
+        return $exercises;
     }catch(PDOException $e){
         echo $e->getMessage();
     }

@@ -16,14 +16,4 @@ function GetAllCategories()
         echo $e->getMessage();
     }
 }
-
-function SaveChosenCategorie($chosenCat){
-    global $catName;
-    $catName = $chosenCat;
-}
-
-function ReturnChosenCategorie(){
-    global $catName;
-    return $catName;
-}
 ?>
