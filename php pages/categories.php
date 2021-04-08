@@ -1,7 +1,7 @@
 <?php
+session_start();
 include '../includes/get_categories_template.php';
 $categories = GetAllCategories();
-setcookie("catName", "Test");
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ setcookie("catName", "Test");
             <?php
             for($i=0; $i<count($categories); $i++)
             { ?>
-            <a href="selectedCategorie.php"><div class="menu" onClick='<?php  ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php $catName[$i]=$categories[$i]->MuscleTrained; echo $catName[$i]; ?></div></a>
+            <a href="selectedCategorie.php"><div class="menu" onClick='<?php $_SESSION['catName'] = $categories[$i]->MuscleTrained; ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[$i]->MuscleTrained; ?></div></a>
             <?php
             }
             ?>

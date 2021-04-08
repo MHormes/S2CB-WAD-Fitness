@@ -1,5 +1,7 @@
 <?php
-$exerciseName = 'test';
+session_start();
+include '../includes/get_exercise_template.php';
+$exerciseName = $_SESSION['exName'];
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +23,7 @@ $exerciseName = 'test';
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing page for exercise:" . $exerciseName; ?>  </div>
+            <div class="subheader"><?php echo "Showing page for exercise: " . $exerciseName; ?>  </div>
             
             <!--Show information for exersice-->
             <?php
