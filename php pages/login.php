@@ -21,11 +21,12 @@ function loginAccount()
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['Password'] = $_POST["password"];
             $_SESSION['Username'] = $_POST["username"];
-            $message = null;
+            setcookie('loginMessage', "", 1);
             header('Location: mypage.php');
         } 
         else {
-            $message = "User not found";
+            setcookie('loginMessage', "User not found");
+            header('Location: login.php');
         }
 
     }catch(PDOException $e){
@@ -82,10 +83,11 @@ if(isset($_POST['btnLogin']))
 
                 <?php
                 if(isset($_SESSION["UsernameReg"])){
+                    setcookie('loginMessage', "", 1);
                     echo "Thank you for creating an account. You can now login using the password for account:" . $_SESSION['UsernameReg'];
                 }
-                if(isset($message)){
-                    echo $message;
+                if(isset($_COOKIE['loginMessage'])){
+                    echo $_COOKIE['loginMessage'];
                 }
                 
                 ?>
