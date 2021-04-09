@@ -30,7 +30,7 @@ $categories = GetAllCategories();
             
             foreach($categories as $value)
             { ?>
-            <a href="selectedCategorie.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 20vw"/></br><?php echo $value->MuscleTrained; ?></div></a>
+            <a href="selectedCategorie.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/></br><?php echo $value->MuscleTrained; ?></div></a>
             <?php
             }
             ?>

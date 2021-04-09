@@ -26,7 +26,7 @@ $categories = GetAllCategories();
         <div class="grid-container2">
             <div class="subheader">Pre-made workouts</div>
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%;"/></div></a>
+            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
         </div>
@@ -37,7 +37,7 @@ $categories = GetAllCategories();
             <?php
             for($i=0; $i<=3; $i++)
             { ?>
-            <a href="selectedCategorie.php?catName=<?php echo $categories[$i]->MuscleTrained;?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 20vw"/></br><?php echo $categories[$i]->MuscleTrained; ?></div></a>
+            <a href="selectedCategorie.php?catName=<?php echo $categories[$i]->MuscleTrained;?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/></br><?php echo $categories[$i]->MuscleTrained; ?></div></a>
             <?php
             }
             ?>

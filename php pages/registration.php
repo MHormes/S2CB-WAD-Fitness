@@ -32,9 +32,9 @@ if(isset($_POST['btnRegister']))
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
-        <link rel="stylesheet" type="text/css" href="../recourses/css/main.css">
-        <link rel="stylesheet" type="text/css" href="../recourses/css/login.css">
-        <link rel="stylesheet" type="text/css" href="../resources/css/registration.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
+        
     </head>
     <body>
 
@@ -47,12 +47,12 @@ if(isset($_POST['btnRegister']))
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         <!-- contact form -->
-        <section class="registration-form">
+        <section class="login-form">
             <div class="row">
                 <h2>Sign up</h2>
             </div>
             <div class="row">
-                <form id="register" method="post" action="registration.php" class="registration-form">
+                <form id="register" method="post" action="registration.php" class="login-form">
                     <!-- inserting first name, second name, username, password and confirm password -->
                     <div class="row">
                         <label for="fName">First name</label>

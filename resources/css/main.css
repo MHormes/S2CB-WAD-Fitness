@@ -29,7 +29,7 @@ body {
     display: grid;
     grid-template-areas:
         'subheader subheader subheader subheader';
-    grid-gap: 10px;
+    grid-gap: 2vw;
     background-color: #33658A;
     text-align: center;
     padding: 20px;
@@ -41,7 +41,6 @@ body {
     color: #86BBD8;
     padding: 20px;
     font-size: 2vw;
-
 }
 
 .header{
@@ -63,8 +62,9 @@ body {
 .menu{
     background-color: #2F4858;
     color: #86BBD8;
-    padding: 1vw;
-    width: 20vw;
+    width: 22vw;
+    padding: 15px;
+    
 }
 
 @media screen and (max-width: 750px){
@@ -88,8 +88,7 @@ body {
             'menus menus'
             'menus menus'
             'menus menus';
-
-        grid-gap: 10px;
+        grid-gap: 2vw;
         background-color: #33658A;
         text-align: center;
         padding: 20px;
@@ -124,5 +123,6 @@ body {
         background-color: #2F4858;
         color: #86BBD8;
         padding: 15px;
+        width: 40vw;
     }
 }
