@@ -37,7 +37,7 @@ $categories = GetAllCategories();
             <?php
             for($i=0; $i<=3; $i++)
             { ?>
-            <a href="selectedCategorie.php?catName=<?php echo $categories[$i]->MuscleTrained;?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[$i]->MuscleTrained; ?></div></a>
+            <a href="selectedCategorie.php?catName=<?php echo $categories[$i]->MuscleTrained;?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 20vw"/></br><?php echo $categories[$i]->MuscleTrained; ?></div></a>
             <?php
             }
             ?>

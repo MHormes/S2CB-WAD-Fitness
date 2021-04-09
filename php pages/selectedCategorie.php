@@ -32,7 +32,7 @@ $excercises = GetAllExercises($catName);
             <?php
             foreach($excercises as $value){
                 ?>
-            <a href="selectedExercise.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/><?php echo $value->Name; ?></div></a>
+            <a href="selectedExercise.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 20vw"/></br><?php echo $value->Name; ?></div></a>
             <?php
             }
             ?>

@@ -1,5 +1,5 @@
 /*Grid used for displaying content*/
-.content-container{
+.grid-container-content{
     display: grid;
     grid-template-areas: 
         'content-video content-video content-information content-information content-information ';

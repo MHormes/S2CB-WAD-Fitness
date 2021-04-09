@@ -25,7 +25,7 @@ $exerciseName = $_SESSION['exName'];
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
         
-        <div class="content-container">
+        <div class="grid-container-content">
             <div class="subheader"><?php echo "Showing page for exercise: " . $exerciseName; ?></div>
             <a><div class="content-video" onClick=''><img src="../resources/pictures/VideoCap.png"/></div></a>
             <div class="content-information">
