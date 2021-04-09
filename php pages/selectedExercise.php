@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../includes/get_exercise_template.php';
+$_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
 ?>
 
@@ -12,6 +13,7 @@ $exerciseName = $_SESSION['exName'];
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
         <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+        <link rel="stylesheet" type="text/css" href="../recources/css/content.css">
     </head>
     <body>
         <div class="grid-container">
@@ -22,13 +24,14 @@ $exerciseName = $_SESSION['exName'];
             <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
-        <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing page for exercise: " . $exerciseName; ?>  </div>
-            
-            <!--Show information for exersice-->
-            <?php
-
-            ?>
+        
+        <div class="content-container">
+            <div class="subheader"><?php echo "Showing page for exercise: " . $exerciseName; ?></div>
+            <a><div class="content-video" onClick=''><img src="../resources/pictures/VideoCap.png"/></div></a>
+            <div class="content-information">
+                <h1><?php echo "test" ?></h1></br>
+                <h1><?php echo "test2"?></h1></br>
+            </div>
         </div>
     </body>
 </html>

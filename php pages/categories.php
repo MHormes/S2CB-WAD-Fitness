@@ -27,9 +27,10 @@ $categories = GetAllCategories();
            
             <!--Populate the categorie page with all the categories-->
             <?php
-            for($i=0; $i<count($categories); $i++)
+            
+            foreach($categories as $value)
             { ?>
-            <a href="selectedCategorie.php"><div class="menu" onClick='<?php $_SESSION['catName'] = $categories[$i]->MuscleTrained; ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[$i]->MuscleTrained; ?></div></a>
+            <a href="selectedCategorie.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $value->MuscleTrained; ?></div></a>
             <?php
             }
             ?>

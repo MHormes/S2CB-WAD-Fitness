@@ -2,6 +2,7 @@
 session_start();
 include '../includes/get_categories_template.php';
 include '../includes/get_exercise_template.php';
+$_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 $excercises = GetAllExercises($catName);
 ?>
@@ -29,12 +30,14 @@ $excercises = GetAllExercises($catName);
             
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
-            for($i = 0; $i < count($excercises); $i++){
+            foreach($excercises as $value){
                 ?>
-            <a href="selectedExercise.php"><div class="menu" onClick='<?php $_SESSION['exName'] = $excercises[$i]->Name; ?>'><img src="../resources/pictures/exercise.jpg" style="width: 100%"/><?php echo $excercises[$i]->Name; ?></div></a>
+            <a href="selectedExercise.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/><?php echo $value->Name; ?></div></a>
             <?php
             }
             ?>
+
+
         </div>
     </body>
 </html>

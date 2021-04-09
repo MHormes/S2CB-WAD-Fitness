@@ -1,0 +1,24 @@
+/*Grid used for displaying content*/
+.content-container{
+    display: grid;
+    grid-template-areas: 
+        'content-video content-video content-information content-information content-information ';
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    background-color: #33658A;
+    text-align: center;
+    padding: 20px;
+}
+
+.content-video{
+    grid-area: content-video;
+    background-color: #2F4858;
+    color: #86BBD8;
+    padding: 20px;
+}
+
+.content-information{
+    grid-area: information;
+    background-color: #2F4858;
+    
+}

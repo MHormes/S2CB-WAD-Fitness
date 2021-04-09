@@ -22,6 +22,7 @@ $categories = GetAllCategories();
             <a href="mypage.php"><div class="navi">My page</div></a>
             <a href="login.php"><div class="navi">Login</div></a>
         </div>
+
         <div class="grid-container2">
             <div class="subheader">Pre-made workouts</div>
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
@@ -29,14 +30,14 @@ $categories = GetAllCategories();
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
             <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
         </div>
+
         <div class="grid-container2">
             <div class="subheader">Categories</div>
-            
             <!--Populate the index page with a set of 4 categories-->
             <?php
             for($i=0; $i<=3; $i++)
             { ?>
-            <a href="selectedCategorie.php"><div class="menu" onClick='<?php $_SESSION['catName'] = $categories[$i]->MuscleTrained; ?>'><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[$i]->MuscleTrained; ?></div></a>
+            <a href="selectedCategorie.php?catName=<?php echo $categories[$i]->MuscleTrained;?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/><?php echo $categories[$i]->MuscleTrained; ?></div></a>
             <?php
             }
             ?>
