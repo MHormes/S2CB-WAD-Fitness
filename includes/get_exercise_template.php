@@ -20,6 +20,7 @@ function GetAllExercises($catName)
 function GetChosenExercise($exName)
 {
     include '../includes/connection_template.php';
+    include '../php classes/Content.php';
     try{
 
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
@@ -27,8 +28,9 @@ function GetChosenExercise($exName)
         $sth = $conn->prepare($sql);
         $sth->execute([':exName' => $exName]);
 
-        $exercise = $sth->fetchAll(PDO::FETCH_OBJ);
-
+        $result = $sth->fetchAll(PDO::FETCH_OBJ);
+        $exercise = new Content($result[0]->Name, $result[0]->MuscleTrained, $result[0]->Reps, $result[0]->Sets, $result[0]->Duration);
+        return $exercise;
     }catch(PDOException $e){
         echo $e->getMessage();
     }

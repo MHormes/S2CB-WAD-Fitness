@@ -3,6 +3,7 @@ session_start();
 include '../includes/get_exercise_template.php';
 $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
+$exercise = GetChosenExercise($exerciseName);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ $exerciseName = $_SESSION['exName'];
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
         <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
-        <link rel="stylesheet" type="text/css" href="../recources/css/content.css">
+        <link rel="stylesheet" type="text/css" href="../resources/css/content.css">
     </head>
     <body>
         <div class="grid-container">
@@ -26,11 +27,13 @@ $exerciseName = $_SESSION['exName'];
         </div>
         
         <div class="grid-container-content">
-            <div class="subheader"><?php echo "Showing page for exercise: " . $exerciseName; ?></div>
-            <a><div class="content-video" onClick=''><img src="../resources/pictures/VideoCap.png"/></div></a>
+            <div class="subheader"><?php echo "Showing page for exercise: " . $exercise->GetExerciseName(); ?></div>
+            <a href=""><div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%"/></div></a>
             <div class="content-information">
-                <h1><?php echo "test" ?></h1></br>
-                <h1><?php echo "test2"?></h1></br>
+                <h1><?php echo "This exercise is used to train your ". $exercise->GetMuscleTrained(); ?></h1></br>
+                <h1><?php echo "Recommended amount of Repetitions: ". $exercise->GetRepsNumber();?></h1></br>
+                <h1><?php echo "Recommended amount of sets: ". $exercise->GetSetsNumber();?></h1></br>
+                <h1><?php echo "Estimated duration of the exercise: ". $exercise->GetTimeDuration(). " minutes";?></h1></br>
             </div>
         </div>
     </body>

@@ -16,6 +16,25 @@ class Content{
         $this->setsNumber = $setsNumber;
         $this->timeDuration = $timeDuration;
     }
-}
 
+    public function GetExerciseName(){
+            return $this->exerciseName;
+    }
+
+    public function GetMuscleTrained(){
+        return $this->muscleTrained;
+    }
+
+    public function GetRepsNumber(){
+        return $this->repsNumber;
+    }
+
+    public function GetSetsNumber(){
+        return $this->setsNumber;
+    }
+
+    public function GetTimeDuration(){
+        return $this->timeDuration;
+    }
+}
 ?>

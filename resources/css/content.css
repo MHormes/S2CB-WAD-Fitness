@@ -1,24 +1,53 @@
 /*Grid used for displaying content*/
 .grid-container-content{
     display: grid;
-    grid-template-areas: 
-        'content-video content-video content-information content-information content-information ';
+    grid-template-areas:
+        'subheader subheader subheader subheader'
+        'video video info info';
     grid-template-rows: auto;
-    grid-gap: 10px;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
     background-color: #33658A;
     text-align: center;
     padding: 20px;
 }
 
 .content-video{
-    grid-area: content-video;
+    grid-area: video;
     background-color: #2F4858;
     color: #86BBD8;
     padding: 20px;
+    width: 60vw;
 }
 
 .content-information{
-    grid-area: information;
-    background-color: #2F4858;
     
+    grid-area: info;
+    background-color: #2F4858;
+    padding: 20px;
+    width: 35vw;
+    font-size: 1vw;
+    color: #86BBD8;
+}
+
+@media screen and (max-width: 750px){
+
+    .content-video{
+        grid-area: video;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 20px;
+        width: 60vw;
+    }
+    
+    .content-information{
+        
+        grid-area: info;
+        background-color: #2F4858;
+        padding: 20px;
+        width: 35vw;
+        font-size: 1.5vw;
+    }
+
+
 }

@@ -29,6 +29,7 @@ body {
     display: grid;
     grid-template-areas:
         'subheader subheader subheader subheader';
+    grid-template-rows: auto;
     grid-gap: 2vw;
     background-color: #33658A;
     text-align: center;
