@@ -20,7 +20,12 @@ $categories = GetAllCategories();
             <a href="premade.php"><div class="navi">Pre-made workouts</div></a>
             <a href="categories.php"><div class="navi">Categories</div></a>
             <a href="mypage.php"><div class="navi">My page</div></a>
+            
+            <?php if(isset($_SESSION['loggedin'])): ?>
+            <a href="logout.php"><div class="navi">Logout</div></a>
+            <?php else: ?>
             <a href="login.php"><div class="navi">Login</div></a>
+            <?php endif; ?>
         </div>
 
         <div class="grid-container2">
