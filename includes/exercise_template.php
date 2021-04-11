@@ -35,4 +35,18 @@ function GetChosenExercise($exName)
         echo $e->getMessage();
     }
 }
+
+function DeleteExercise($exName){
+
+    include '../includes/connection_template.php';
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $sql = 'DELETE FROM exercise WHERE Name = :exName';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':exName' => $exName]);
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
 ?>

@@ -1,11 +1,21 @@
 <?php
-session_start();
-include '../includes/get_exercise_template.php';
-$_SESSION['exName'] = $_GET['exName'];
-$exerciseName = $_SESSION['exName'];
-$exercise = GetChosenExercise($exerciseName);
-?>
+include '../includes/exercise_template.php';
 
+if(isset($_POST['btnDelete']))
+{
+    $_SESSION['exName'] = $_GET['exName'];
+    $exerciseName = $_SESSION['exName'];
+    DeleteExercise($exerciseName);
+    header("Location: categories.php");
+}
+else{
+    session_start();
+    $_SESSION['exName'] = $_GET['exName'];
+    $exerciseName = $_SESSION['exName'];
+    $exercise = GetChosenExercise($exerciseName);
+    $_SESSION['role'] = 'admin';    
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,6 +44,13 @@ $exercise = GetChosenExercise($exerciseName);
                 <h1><?php echo "Recommended amount of Repetitions: ". $exercise->GetRepsNumber();?></h1></br>
                 <h1><?php echo "Recommended amount of sets: ". $exercise->GetSetsNumber();?></h1></br>
                 <h1><?php echo "Estimated duration of the exercise: ". $exercise->GetTimeDuration(). " minutes";?></h1></br>
+                <?php if($_SESSION['role'] == 'admin')
+                {?> 
+                <form action="" method="post">
+                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation. Should be changed when figured out how...)">
+                </form>
+                <?php
+                }?>
             </div>
         </div>
     </body>

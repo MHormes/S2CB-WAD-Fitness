@@ -10,7 +10,7 @@ function CreateAccount()
         $sth = $conn->prepare($sql);
         $sth->execute([':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email'], ':role' => 'member']);
 
-        $conn= null;
+        $conn = null;
     }catch(PDOException $e){
         echo $e->getMessage();
     }

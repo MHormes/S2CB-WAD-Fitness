@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/get_categories_template.php';
-include '../includes/get_exercise_template.php';
+include '../includes/exercise_template.php';
 $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 $excercises = GetAllExercises($catName);
