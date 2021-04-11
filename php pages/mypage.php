@@ -1,6 +1,29 @@
 <?php
-session_start();
 include '../includes/get_user.php';
+
+function UpdateAccount()
+{
+    session_start();
+    include '../includes/connection_template.php';
+
+    try{
+        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $sql = 'UPDATE user SET FirstName = :firstName, SecondName = :secondName, UserName = :username, Email = :email, Password = :password WHERE username = :userToUpdate';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':firstName' => $_POST['ufname'], ':secondName' => $_POST['ulname'], ':username' => $_POST['uusername'], ':password' => $_POST['upassword'], ':email' => $_POST['uemail']]);
+
+        $conn= null;
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    $_SESSION['UsernameReg'] = $_POST["username"];
+}
+
+if(isset($_POST['btnUpdate']))
+{
+    UpdateAccount();
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,23 +60,23 @@ include '../includes/get_user.php';
                     <!-- inserting first name, second name, username, password and confirm password -->
                     <div class="row">
                         <label for="fName">First name</label>
-                        <input type="text" name="fname" id="fname" value=<?php echo $newUser->fName; ?> required>
+                        <input type="text" name="ufname" id="ufname" value=<?php echo $newUser->fName; ?> required>
                     </div>
                     <div class="row">
                         <label for="lName">Last name</label>
-                        <input type="text" name="lname" id="lname" value=<?php echo $newUser->lName; ?> required>
+                        <input type="text" name="ulname" id="ulname" value=<?php echo $newUser->lName; ?> required>
                     </div>
                     <div class="row">
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" value=<?php echo $newUser->Username; ?> required>
+                        <input type="text" name="uusername" id="uusername" value=<?php echo $newUser->Username; ?> required>
                     </div>
                     <div class="row">
                         <label for="pwd">Password</label>
-                        <input type="password" name="password" id="password" value=<?php echo $newUser->Password; ?> required>
+                        <input type="password" name="upassword" id="upassword" value=<?php echo $newUser->Password; ?> required>
                     </div>
                     <div class="row">
                         <label for="email">Email</label>
-                        <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="email" id="email" value=<?php echo $newUser->Email; ?> required>
+                        <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="uemail" id="uemail" value=<?php echo $newUser->Email; ?> required>
                     </div>
                     <div class="row">
                         <input type="submit" value="Update" name="btnUpdate">
