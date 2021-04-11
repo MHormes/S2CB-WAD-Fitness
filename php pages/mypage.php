@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../includes/get_user.php';
 
 function UpdateAccount()
@@ -51,32 +52,32 @@ if(isset($_POST['btnUpdate']))
             <?php endif; ?>
         </div>
         <?php
-        if(isset($_SESSION["Username"])){
+        if(isset($_SESSION['Username'])){
             $UserUsername = $_SESSION['Username'];
             $newUser = GetUserDetails($UserUsername);
-            echo "Welcome to your own page, " . $_SESSION["Username"]; ?>
+            echo "Welcome to your own page, " . $_SESSION['Username']; ?>
             <div class="row">
                 <form id="update" method="post" action="mypage.php" class="login-form">
                     <!-- inserting first name, second name, username, password and confirm password -->
                     <div class="row">
                         <label for="fName">First name</label>
-                        <input type="text" name="ufname" id="ufname" value=<?php echo $newUser->fName; ?> required>
+                        <input type="text" name="ufname" id="ufname" value=<?php echo $newUser->GetFirstname(); ?> required>
                     </div>
                     <div class="row">
                         <label for="lName">Last name</label>
-                        <input type="text" name="ulname" id="ulname" value=<?php echo $newUser->lName; ?> required>
+                        <input type="text" name="ulname" id="ulname" value=<?php echo $newUser->GetSecondname(); ?> required>
                     </div>
                     <div class="row">
                         <label for="username">Username</label>
-                        <input type="text" name="uusername" id="uusername" value=<?php echo $newUser->Username; ?> required>
+                        <input type="text" name="uusername" id="uusername" value=<?php echo $newUser->GetUsername(); ?> required>
                     </div>
                     <div class="row">
                         <label for="pwd">Password</label>
-                        <input type="password" name="upassword" id="upassword" value=<?php echo $newUser->Password; ?> required>
+                        <input type="password" name="upassword" id="upassword" value=<?php echo $newUser->GetPassword(); ?> required>
                     </div>
                     <div class="row">
                         <label for="email">Email</label>
-                        <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="uemail" id="uemail" value=<?php echo $newUser->Email; ?> required>
+                        <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="uemail" id="uemail" value=<?php echo $newUser->GetEmail(); ?> required>
                     </div>
                     <div class="row">
                         <input type="submit" value="Update" name="btnUpdate">

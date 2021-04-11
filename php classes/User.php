@@ -2,7 +2,7 @@
 
 class User{
 
-    private $firstname;
+    public $firstname;
     private $secondname;
     private $username;
     private $password;
@@ -18,6 +18,29 @@ class User{
         $this->role = $role;
     }
 
+    public function Getfirstname(){
+        return $this->firstname;
+}
+
+public function GetSecondname(){
+    return $this->secondname;
+}
+
+public function GetUsername(){
+    return $this->username;
+}
+
+public function GetPassword(){
+    return $this->password;
+}
+
+public function GetEmail(){
+    return $this->email;
+}
+
+public function GetRole(){
+    return $this->role;
+}
     public function RegMessage(){
         return "Hello $this->username, thank you for registering";
     }
