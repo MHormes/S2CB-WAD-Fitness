@@ -29,7 +29,7 @@ function GetChosenExercise($exName)
         $sth->execute([':exName' => $exName]);
 
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
-        $exercise = new Content($result[0]->Name, $result[0]->MuscleTrained, $result[0]->Reps, $result[0]->Sets, $result[0]->Duration);
+        $exercise = new Content($result[0]->Name, $result[0]->MuscleTrained, $result[0]->Reps, $result[0]->SetsNumber, $result[0]->Duration);
         return $exercise;
     }catch(PDOException $e){
         echo $e->getMessage();
