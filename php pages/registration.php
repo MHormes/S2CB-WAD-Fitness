@@ -8,7 +8,7 @@ function CreateAccount()
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
         $sql = 'INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password, :role)';
         $sth = $conn->prepare($sql);
-        $sth->execute([INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password, :role)':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email'], ':role' => 'member']);
+        $sth->execute([':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email'], ':role' => 'member']);
 
         $conn = null;
     }catch(PDOException $e){

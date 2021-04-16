@@ -4,25 +4,26 @@ include '../includes/get_user.php';
 
 function UpdateAccount()
 {
-    session_start();
+    
     include '../includes/connection_template.php';
 
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-        $sql = 'UPDATE user SET FirstName = :firstName, SecondName = :secondName, UserName = :username, Email = :email, Password = :password WHERE username = :userToUpdate';
+        $sql = 'UPDATE user SET FirstName = :firstName, SecondName = :secondName, UserName = :username, Email = :email, Password = :password WHERE UserName = :userToUpdate';
         $sth = $conn->prepare($sql);
-        $sth->execute([':firstName' => $_POST['ufname'], ':secondName' => $_POST['ulname'], ':username' => $_POST['uusername'], ':password' => $_POST['upassword'], ':email' => $_POST['uemail']]);
+        $sth->execute([':firstName' => $_POST['ufname'], ':secondName' => $_POST['ulname'], ':username' => $_POST['uusername'], ':password' => $_POST['upassword'], ':email' => $_POST['uemail'], ':userToUpdate' => $_POST['ufname']]);
 
         $conn= null;
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-    $_SESSION['UsernameReg'] = $_POST["username"];
+    $_SESSION['UsernameReg'] = $_POST['ufname'];
 }
 
 if(isset($_POST['btnUpdate']))
 {
     UpdateAccount();
+    header('Location: mypage.php');
     exit();
 }
 ?>
