@@ -1,8 +1,10 @@
 <?php
 session_start();
+include '../includes/connection_template.php';
 function loginAccount()
 {
-    include '../includes/connection_template.php';
+    global $username;
+    global $password;
     try{
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
         $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';

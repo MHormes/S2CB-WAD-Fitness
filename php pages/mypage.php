@@ -11,13 +11,14 @@ function UpdateAccount()
         $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
         $sql = 'UPDATE user SET FirstName = :firstName, SecondName = :secondName, UserName = :username, Email = :email, Password = :password WHERE UserName = :userToUpdate';
         $sth = $conn->prepare($sql);
-        $sth->execute([':firstName' => $_POST['ufname'], ':secondName' => $_POST['ulname'], ':username' => $_POST['uusername'], ':password' => $_POST['upassword'], ':email' => $_POST['uemail'], ':userToUpdate' => $_POST['ufname']]);
+        $sth->execute([':firstName' => $_POST['ufname'], ':secondName' => $_POST['ulname'], ':username' => $_POST['uusername'], ':password' => $_POST['upassword'], ':email' => $_POST['uemail'], ':userToUpdate' => $_SESSION['Username']]);
+
+        $_SESSION['Username'] = $_POST['uusername'];
 
         $conn= null;
     }catch(PDOException $e){
         echo $e->getMessage();
     }
-    $_SESSION['UsernameReg'] = $_POST['ufname'];
 }
 
 if(isset($_POST['btnUpdate']))
@@ -54,8 +55,8 @@ if(isset($_POST['btnUpdate']))
         </div>
         <?php
         if(isset($_SESSION['Username'])){
-            $UserUsername = $_SESSION['Username'];
-            $newUser = GetUserDetails($UserUsername);
+            $userUsername = $_SESSION['Username'];
+            $newUser = GetUserDetails($userUsername);
             echo "Welcome to your own page, " . $_SESSION['Username']; ?>
             <div class="row">
                 <form id="update" method="post" action="mypage.php" class="login-form">
