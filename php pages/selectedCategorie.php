@@ -5,6 +5,12 @@ include '../includes/exercise_template.php';
 $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 $excercises = GetAllExercises($catName);
+
+if(isset($_SESSION['loggedin']))
+{
+    include_once '../includes/get_user.php';
+    $user = GetUserDetails($_SESSION['Username']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +39,11 @@ $excercises = GetAllExercises($catName);
         </div>
 
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName;?> <form action="createExercise.php" method="post"><input class="button" type="submit" name="btnNewExercise" value="Create new exercise"></form></div>
+            <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName; ?>
+            <?php if(isset($_SESSION['loggedin']) && $user->GetRole() == 'admin'){ ?>
+                <form action="createExercise.php" method="post"><input class="button" type="submit" name="btnNewExercise" value="Create new exercise"></form>
+            <?php } ?>
+            </div>
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
             foreach($excercises as $value){
@@ -42,8 +52,6 @@ $excercises = GetAllExercises($catName);
             <?php
             }
             ?>
-
-
         </div>
     </body>
 </html>

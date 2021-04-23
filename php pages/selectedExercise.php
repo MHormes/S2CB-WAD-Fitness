@@ -24,7 +24,7 @@ function UpdateExercise($exerciseName){
 if(isset($_SESSION['loggedin']))
 {
     include_once '../includes/get_user.php';
-    $newUser = GetUserDetails($_SESSION['Username']);
+    $user = GetUserDetails($_SESSION['Username']);
 }
 if(isset($_POST['btnDelete']))
 {
@@ -103,7 +103,7 @@ else{
                 <h1><?php echo "Recommended amount of sets: ". $exercise->GetSetsNumber();?></h1></br>
                 <h1><?php echo "Estimated duration of the exercise: ". $exercise->GetTimeDuration(). " minutes";?></h1></br>
                 <!--If a admin is logged in, Show update and delete button-->
-                <?php if(isset($_SESSION['loggedin']) && $newUser->GetRole() == 'admin') { ?> 
+                <?php if(isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?> 
                 <form action="" method="post">
                     <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
                     </br>

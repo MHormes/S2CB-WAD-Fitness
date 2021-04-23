@@ -1,28 +1,12 @@
 <?php
 session_start();
 include '../includes/get_categories_template.php';
+include '../includes/exercise_template.php';
 include '../includes/connection_template.php';
 $catName = $_SESSION['catName'];
 
-function CreateNewExercise(){
-    global $username;
-    global $password;
-    global $connstring;
-
-    try{
-        $conn = new PDO($connstring,$username, $password);
-        $sql = 'INSERT INTO exercise VALUES(:exName, :muscleTrained, :exReps, :exSets, :exDuration)';
-        $sth = $conn->prepare($sql);
-        $sth->execute([':exName' => $_POST['exName'], ':muscleTrained' => $_SESSION['catName'], ':exReps' => $_POST['reps'], ':exSets' => $_POST['setsnumber'], ':exDuration' => $_POST['timeDuration']]);
-        $conn = null;
-        
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-}
-
 if(isset($_POST['btnConfirmCreate'])){
-    CreateNewExercise();
+    CreateNewExercise($_POST['exName'], $_SESSION['catName'], $_POST['reps'], $_POST['sets'], $_POST['timeDuration']);
     header('Location: selectedCategorie.php?catName='.$catName);
 }
 ?>
