@@ -1,7 +1,9 @@
 <?php
 session_start();
 include '../includes/categories_template.php';
+include '../includes/workout_template.php';
 $categories = GetAllCategories();
+$workouts = GetAllWorkouts();
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +33,14 @@ $categories = GetAllCategories();
 
         <div class="grid-container2">
             <div class="subheader">Pre-made workouts</div>
-            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
-            <a href=""><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></div></a>
+            <!--Populate the index page with a set of 4 workouts-->
+            <?php
+            for($i=0; $i<=3; $i++)
+            { ?>
+            <a href="selectedWorkout.php?woName=<?php echo $workouts[$i]->Name;?>"><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></br><?php echo $workouts[$i]->Name; ?></div></a>
+            <?php
+            }
+            ?>
         </div>
 
         <div class="grid-container2">
