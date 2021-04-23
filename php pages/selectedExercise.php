@@ -7,7 +7,7 @@ $exerciseName = $_SESSION['exName'];
 
 if(isset($_SESSION['loggedin']))
 {
-    include_once '../includes/get_user.php';
+    include_once '../includes/user_template.php';
     $user = GetUserDetails($_SESSION['Username']);
 }
 if(isset($_POST['btnDelete']))

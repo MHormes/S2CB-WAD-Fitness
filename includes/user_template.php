@@ -21,7 +21,7 @@ function GetUserDetails($userUsername)
     }
 }
 
-function UpdateAccount($firstName, $secondName, $uusername, $upassword, $email)
+function UpdateAccount($oldUsername, $firstName, $secondName, $uusername, $upassword, $email)
 {
     global $username;
     global $password;
@@ -31,7 +31,7 @@ function UpdateAccount($firstName, $secondName, $uusername, $upassword, $email)
         $conn = new PDO($connstring,$username, $password);
         $sql = 'UPDATE user SET FirstName = :firstName, SecondName = :secondName, UserName = :username, Email = :email, Password = :password WHERE UserName = :userToUpdate';
         $sth = $conn->prepare($sql);
-        $sth->execute([':firstName' => $firstName, ':secondName' => $secondName, ':username' => $uusername, ':password' => $upassword, ':email' => $email, ':userToUpdate' => $_SESSION['Username']]);
+        $sth->execute([':firstName' => $firstName, ':secondName' => $secondName, ':username' => $uusername, ':password' => $upassword, ':email' => $email, ':userToUpdate' => $oldUsername]);
 
         $_SESSION['Username'] = $uusername;
 

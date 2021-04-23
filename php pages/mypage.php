@@ -4,7 +4,7 @@ include '../includes/user_template.php';
 
 if(isset($_POST['btnUpdate']))
 {
-    UpdateAccount($_POST['ufname'], $POST['ulname'], $_POST['uusername'], $_POST['upassword'], $_POST['uemail']);
+    UpdateAccount($_SESSION['Username'], $_POST['ufname'], $_POST['ulname'], $_POST['uusername'], $_POST['upassword'], $_POST['uemail']);
     header('Location: mypage.php');
     exit();
 }
