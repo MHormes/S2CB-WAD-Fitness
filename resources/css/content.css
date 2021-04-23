@@ -1,3 +1,10 @@
+/*Rows for editing/adding exercises*/
+.row {
+    width: 100px;
+    margin: 0 auto;
+    display: inline;
+}
+
 /*Grid used for displaying content*/
 .grid-container-content{
     display: grid;

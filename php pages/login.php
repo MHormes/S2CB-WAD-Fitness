@@ -5,8 +5,9 @@ function loginAccount()
 {
     global $username;
     global $password;
+    global $connstring;
     try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $conn = new PDO($connstring,$username, $password);
         $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
         $sth = $conn->prepare($sql);
 

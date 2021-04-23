@@ -32,15 +32,8 @@ $excercises = GetAllExercises($catName);
             
         </div>
 
-        <form action="" method="post">
-                    <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
-                    </br>
-                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation. Should be changed when figured out how...)">
-                </form>
-                
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName; ?>  </div>
-            
+            <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName;?> <form action="createExercise.php" method="post"><input class="button" type="submit" name="btnNewExercise" value="Create new exercise"></form></div>
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
             foreach($excercises as $value){

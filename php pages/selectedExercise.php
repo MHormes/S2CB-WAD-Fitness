@@ -83,13 +83,13 @@ else{
                 <input type="text" name="muscleTrained" id="muscleTrained" value=<?php echo $exercise->GetMuscleTrained(); ?> required>
 
                 <h1>Recommended amount of Repetitions:</h1></br>
-                <input type="text" name="reps" id="reps" value=<?php echo $exercise->GetRepsNumber(); ?> required>
+                <input type="number" name="reps" id="reps" value=<?php echo $exercise->GetRepsNumber(); ?> required>
 
                 <h1>Recommended amount of sets:</h1></br>
-                <input type="text" name="setsnumber" id="setsnumber" value=<?php echo $exercise->GetSetsNumber(); ?> required>
+                <input type="number" name="setsnumber" id="setsnumber" value=<?php echo $exercise->GetSetsNumber(); ?> required>
 
                 <h1>Estimated duration of the exercise (in minutes):</h1></br>
-                <input type="text" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
+                <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
                 </br></br>
                     <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
                 </form>
