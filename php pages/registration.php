@@ -1,26 +1,9 @@
 <?php
-function CreateAccount()
-{
-    session_start();
-    include '../includes/connection_template.php';
-
-    try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
-        $sql = 'INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password, :role)';
-        $sth = $conn->prepare($sql);
-        $sth->execute([':firstName' => $_POST['fname'], ':secondName' => $_POST['lname'], ':username' => $_POST['username'], ':password' => $_POST['password'], ':email' => $_POST['email'], ':role' => 'member']);
-
-        $conn = null;
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    $_SESSION['UsernameReg'] = $_POST["username"];
-    header('Location: login.php');
-}
-
+session_start();
+include '../includes/user_template.php';
 if(isset($_POST['btnRegister']))
 {
-    CreateAccount();
+    CreateAccount($_POST['fname'], $_POST['lname'], $_POST['username'], $_POST['password'], $_POST['email']);
     exit();
 }
 ?>

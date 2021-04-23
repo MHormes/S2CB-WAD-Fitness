@@ -1,45 +1,10 @@
 <?php
 session_start();
-include '../includes/connection_template.php';
-function loginAccount()
-{
-    global $username;
-    global $password;
-    global $connstring;
-    try{
-        $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT * FROM user WHERE Username = :username AND Password = :password';
-        $sth = $conn->prepare($sql);
 
-        $sth->execute(
-            array(
-                ':username' => $_POST["username"],
-                ':password' => $_POST["password"]
-            )
-        );
-        $users = $sth->fetchAll();
-        $count = $sth->rowCount();
-
-        if ($count > 0) {
-            $_SESSION['loggedin'] = TRUE;
-            $_SESSION['Password'] = $_POST["password"];
-            $_SESSION['Username'] = $_POST["username"];
-            setcookie('loginMessage', "", 1);
-            header('Location: mypage.php');
-        } 
-        else {
-            setcookie('loginMessage', "User not found");
-            header('Location: login.php');
-        }
-
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-}
-
+include '../includes/user_template.php';
 if(isset($_POST['btnLogin']))
 {
-    loginAccount();
+    loginAccount($_POST["username"], $_POST["password"]);
     exit;
 }
 ?>

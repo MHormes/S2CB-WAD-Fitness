@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/get_categories_template.php';
+include '../includes/categories_template.php';
 include '../includes/exercise_template.php';
 $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];

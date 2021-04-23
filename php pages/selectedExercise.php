@@ -5,22 +5,6 @@ session_start();
 $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
 
-function UpdateExercise($exerciseName){
-    global $username;
-    global $password;
-    global $connstring;
-
-    try{
-        $conn = new PDO($connstring,$username, $password);
-        $sql = 'UPDATE exercise SET MuscleTrained = :muscleTrained, Reps = :reps, SetsNumber = :setsnumber, Duration = :timeDuration WHERE Name = :exerciseName';
-        $sth = $conn->prepare($sql);
-        $sth->execute([':muscleTrained' => $_POST['muscleTrained'], ':setsnumber' => $_POST['setsnumber'], ':reps' => $_POST['reps'], ':timeDuration' => $_POST['timeDuration'], ':exerciseName' => $exerciseName]);
-        $conn= null;
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-}
-
 if(isset($_SESSION['loggedin']))
 {
     include_once '../includes/get_user.php';
@@ -37,7 +21,7 @@ else if(isset($_POST['btnUpdate'])){
 }
 else if(isset($_POST['btnConfirmUpdate'])){
     unset($_SESSION['editMode']);
-    UpdateExercise($exerciseName);
+    UpdateExercise($exerciseName, $_POST['muscleTrained'], $_POST['reps'], $_POST['setsnumber'], $_POST['timeDuration']);
     $exercise = GetChosenExercise($exerciseName);
 }
 else{

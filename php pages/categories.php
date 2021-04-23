@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/get_categories_template.php';
+include '../includes/categories_template.php';
 $categories = GetAllCategories();
 ?>
 

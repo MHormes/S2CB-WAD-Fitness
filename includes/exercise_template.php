@@ -59,6 +59,22 @@ function CreateNewExercise($exName, $muscleTrained, $exReps, $exSets, $timeDurat
     }
 }
 
+function UpdateExercise($exerciseName, $muscleTrained, $exReps, $exSets, $timeDuration){
+    global $username;
+    global $password;
+    global $connstring;
+
+    try{
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'UPDATE exercise SET MuscleTrained = :muscleTrained, Reps = :reps, SetsNumber = :setsnumber, Duration = :timeDuration WHERE Name = :exerciseName';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':muscleTrained' => $muscleTrained, ':setsnumber' => $exSets, ':reps' => $exReps, ':timeDuration' => $timeDuration, ':exerciseName' => $exerciseName]);
+        $conn= null;
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 function DeleteExercise($exName){
 
     global $username;
