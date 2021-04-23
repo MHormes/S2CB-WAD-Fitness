@@ -2,12 +2,11 @@
 session_start();
 include '../includes/categories_template.php';
 include '../includes/exercise_template.php';
-
-$catName = $_SESSION['catName'];
+include '../includes/workout_template.php';
 
 if(isset($_POST['btnConfirmCreate'])){
-    CreateNewExercise($_POST['exName'], $_SESSION['catName'], $_POST['reps'], $_POST['sets'], $_POST['timeDuration']);
-    header('Location: selectedCategorie.php?catName='.$catName);
+    CreateNewWorkout($_POST['woName'], $_POST['muscleTrained']);
+    header('Location: workout.php');
 }
 ?>
 
@@ -39,20 +38,15 @@ if(isset($_POST['btnConfirmCreate'])){
         </div>
 
         <div class="grid-container-content">
-            <div class="subheader"><?php echo "Create a new exercise for categorie: " . $catName;?></div>     
+            <div class="subheader">Create a new workout</div>     
             <div class="content-information">
             <form action="" method="post">
-                <h1>Name of the exercise:</h1></br>
-                <input type="text" name="exName" id="exName" required>
-                <h1>Recommended amount of Repetitions:</h1></br>
-                <input type="number" name="reps" id="reps" required>
-                <h1>Recommended amount of sets:</h1></br>
-                <input type="number" name="setsnumber" id="setsnumber" required>
-                <h1>Estimated duration of the exercise (in minutes):</h1></br>
-                <input type="number" name="timeDuration" id="timeDuration" required>
+                <h1>Name of the workout:</h1></br>
+                <input type="text" name="woName" id="woName" required>
+                <h1>Muscle group trained:</h1></br>
+                <input type="text" name="muscleTrained" id="muscleTrained" required>
                 </br></br>
-
-                <input class="button" type="submit" name="btnConfirmCreate" value="Confirm new exercise">
+                <input class="button" type="submit" name="btnConfirmCreate" value="Confirm new workout">
                 </form>
         </div>
     </body>

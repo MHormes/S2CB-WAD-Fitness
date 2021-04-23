@@ -1,6 +1,6 @@
 <?php
 
-class Content{
+class Exercise{
 
     private $exerciseName;
     private $muscleTrained;
