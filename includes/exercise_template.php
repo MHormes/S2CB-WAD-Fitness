@@ -1,10 +1,12 @@
 <?php
+include '../includes/connection_template.php';
 function GetAllExercises($catName)
 {
-    include '../includes/connection_template.php';
+    global $username;
+    global $password;
+    global $connstring;
     try{
-
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $conn = new PDO($connstring,$username, $password);
         $sql = 'SELECT * FROM exercise WHERE MuscleTrained = :catName';
         $sth = $conn->prepare($sql);
         $sth->execute([':catName' => $catName]);
@@ -19,11 +21,15 @@ function GetAllExercises($catName)
 
 function GetChosenExercise($exName)
 {
-    include '../includes/connection_template.php';
     include '../php classes/Content.php';
+
+    global $username;
+    global $password;
+    global $connstring;
+
     try{
 
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $conn = new PDO($connstring,$username, $password);
         $sql = 'SELECT * FROM exercise WHERE Name = :exName';
         $sth = $conn->prepare($sql);
         $sth->execute([':exName' => $exName]);
@@ -36,11 +42,30 @@ function GetChosenExercise($exName)
     }
 }
 
+function CreateNewExercise($exName, $muscleTrained, $exReps, $exSets, $timeDuration){
+
+    global $username;
+    global $password;
+    global $connstring;
+    try{
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'INSERT INTO exercise VALUES(:exName, :muscleTrained, :exReps, :exSets, :exDuration)';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':exName' => $exName, ':muscleTrained' => $muscleTrained, ':exReps' => $exReps, ':exSets' => $exSets, ':exDuration' => $timeDuration]);
+        $conn = null;
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 function DeleteExercise($exName){
 
-    include '../includes/connection_template.php';
+    global $username;
+    global $password;
+    global $connstring;
     try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $conn = new PDO($connstring,$username, $password);
         $sql = 'DELETE FROM exercise WHERE Name = :exName';
         $sth = $conn->prepare($sql);
         $sth->execute([':exName' => $exName]);
