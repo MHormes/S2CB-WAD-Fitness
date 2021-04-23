@@ -31,6 +31,13 @@ $excercises = GetAllExercises($catName);
             <?php endif; ?>
             
         </div>
+
+        <form action="" method="post">
+                    <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
+                    </br>
+                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation. Should be changed when figured out how...)">
+                </form>
+                
         <div class="grid-container2">
             <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName; ?>  </div>
             

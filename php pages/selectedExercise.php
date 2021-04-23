@@ -1,14 +1,17 @@
 <?php
 include '../includes/exercise_template.php';
+include '../includes/connection_template.php';
 session_start();
 $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
 
 function UpdateExercise($exerciseName){
-    include '../includes/connection_template.php';
+    global $username;
+    global $password;
+    global $connstring;
 
     try{
-        $conn = new PDO("mysql:host=studmysql01.fhict.local;dbname=dbi459847",$username, $password);
+        $conn = new PDO($connstring,$username, $password);
         $sql = 'UPDATE exercise SET MuscleTrained = :muscleTrained, Reps = :reps, SetsNumber = :setsnumber, Duration = :timeDuration WHERE Name = :exerciseName';
         $sth = $conn->prepare($sql);
         $sth->execute([':muscleTrained' => $_POST['muscleTrained'], ':setsnumber' => $_POST['setsnumber'], ':reps' => $_POST['reps'], ':timeDuration' => $_POST['timeDuration'], ':exerciseName' => $exerciseName]);
@@ -22,7 +25,6 @@ if(isset($_SESSION['loggedin']))
 {
     include_once '../includes/get_user.php';
     $newUser = GetUserDetails($_SESSION['Username']);
-    
 }
 if(isset($_POST['btnDelete']))
 {
@@ -60,6 +62,7 @@ else{
             <a href="categories.php"><div class="navi">Categories</div></a>
             <a href="mypage.php"><div class="navi">My page</div></a>
             
+            <!--Login button-->
             <?php if(isset($_SESSION['loggedin'])): ?>
             <a href="logout.php"><div class="navi">Logout</div></a>
             <?php else: ?>
@@ -68,6 +71,7 @@ else{
 
         </div>
         
+        <!--Edit mode enabled/update view for admin editing page -->
         <div class="grid-container-content">
             <div class="subheader"><?php echo "Showing page for exercise: " . $exercise->GetExerciseName(); ?></div>
             <?php if(isset($_SESSION['editMode']))
@@ -90,7 +94,7 @@ else{
                     <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
                 </form>
 
-                    
+                <!--Standard view for everyone-->
       <?php }  else { ?>
                     <a href=""><div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%"/></div></a>
                 <div class="content-information">
@@ -98,11 +102,12 @@ else{
                 <h1><?php echo "Recommended amount of Repetitions: ". $exercise->GetRepsNumber();?></h1></br>
                 <h1><?php echo "Recommended amount of sets: ". $exercise->GetSetsNumber();?></h1></br>
                 <h1><?php echo "Estimated duration of the exercise: ". $exercise->GetTimeDuration(). " minutes";?></h1></br>
+                <!--If a admin is logged in, Show update and delete button-->
                 <?php if(isset($_SESSION['loggedin']) && $newUser->GetRole() == 'admin') { ?> 
                 <form action="" method="post">
                     <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
                     </br>
-                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation. Should be changed when figured out how...)">
+                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation)">
                 </form>
                 <?php } ?>
             <?php } ?>
