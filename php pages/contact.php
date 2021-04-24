@@ -5,14 +5,12 @@ include '../includes/contact_template.php';
 
 if(isset($_POST['btnSend']))
 {
-    $userLogged = false;
     if(isset($_SESSION['Username'])){
-        $userLogged = true;    
+        SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage'], 'true');
     }
     else{
-        $userLogged = false;
+        SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage'], 'false');
     }
-    SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage'], $userLogged);
     header('Location: index.php');
     exit();
 }
