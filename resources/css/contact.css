@@ -1,0 +1,117 @@
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'header header header header';
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    background-color: #33658A;
+    text-align: center;
+    padding: 20px;
+}
+.row {
+    max-width: 500px;
+    margin: 0 auto;
+    display: inline;
+}
+
+section {
+    padding: 80px 0;
+}
+
+
+/* Login form */
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+    color: white;
+}
+
+/* style contract form - text box */
+input[type=message],
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin: 5px 0px;
+    font-size: 1.5vw;
+}
+label{
+    font-size: 2vw;
+}
+
+input[type=submit] {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1vw;
+}
+
+input[type=button] {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px;
+    margin: 5px auto;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    float: right;
+    font-size: 1vw;
+}
+
+
+h2 {
+    font-size: 3vw;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+@media screen and (max-width: 750px){
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'header header'
+            'navi navi'
+            'navi navi';
+        grid-gap: 10px;
+        background-color: #33658A;
+        text-align: center;
+        padding: 20px;
+    }
+      h2{
+        font-size: 4vw;
+    }
+
+    input[type=button]{
+        font-size: 2vw;
+        float: none;
+    }
+
+    input[type=submit]{
+        font-size: 2vw;
+    }
+
+    input[type=message],
+    input[type=text],
+    select,
+    textarea{
+        font-size: 2vw;
+    }
+}
