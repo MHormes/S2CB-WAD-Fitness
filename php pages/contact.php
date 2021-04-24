@@ -1,6 +1,13 @@
 <?php
 session_start();
 include '../includes/user_template.php';
+include '../includes/contact_template.php';
+if(isset($_POST['btnSend']))
+{
+    SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage']);
+    header('Location: index.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,16 +46,16 @@ include '../includes/user_template.php';
                 <form method="post" action="#" class="contact-form">
                     <!-- inserting name, email, message -->
                     <div class="row">
-                        <label for="contName">Full name</label>
-                        <input type="text" name="contName" id="contName" value=<?php echo $newUser->GetFirstname() . ' ' . $newUser->GetSecondname(); ?> required>
+                        <label for="bName">Full name</label>
+                        <input type="text" name="bName" id="bName" value=<?php echo $newUser->GetFirstname() . ' ' . $newUser->GetSecondname(); ?> required>
                     </div>
                     <div class="row">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" value=<?php echo $newUser->GetEmail(); ?> required>
+                        <label for="bEmail">Email</label>
+                        <input type="text" name="bEmail" id="bEmail" value=<?php echo $newUser->GetEmail(); ?> required>
                     </div>
                     <div class="row">
-                        <label for="message">Message</label>
-                        <input type="message" name="message" id="message" placeholder="Write us a message" required>
+                        <label for="bMessage">Message</label>
+                        <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
                         <input type="submit" value="Send" name="btnSend">
@@ -68,16 +75,16 @@ include '../includes/user_template.php';
                 <form method="post" action="#" class="contact-form">
                     <!-- inserting name, email, message -->
                     <div class="row">
-                        <label for="name">Full name</label>
-                        <input type="text" name="name" id="name" placeholder="Enter name" required>
+                        <label for="bName">Full name</label>
+                        <input type="text" name="bName" id="bName" placeholder="Enter name" required>
                     </div>
                     <div class="row">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" id="email" placeholder="Enter email" required>
+                        <label for="bEmail">Email</label>
+                        <input type="text" name="bEmail" id="bEmail" placeholder="Enter email" required>
                     </div>
                     <div class="row">
-                        <label for="message">Message</label>
-                        <input type="message" name="message" id="message" placeholder="Write us a message" required>
+                        <label for="bMessage">Message</label>
+                        <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
                         <input type="submit" value="Send" name="btnSend">
