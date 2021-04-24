@@ -2,9 +2,17 @@
 session_start();
 include '../includes/user_template.php';
 include '../includes/contact_template.php';
+
 if(isset($_POST['btnSend']))
 {
-    SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage']);
+    $userLogged = false;
+    if(isset($_SESSION['Username'])){
+        $userLogged = true;    
+    }
+    else{
+        $userLogged = false;
+    }
+    SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage'], $userLogged);
     header('Location: index.php');
     exit();
 }
