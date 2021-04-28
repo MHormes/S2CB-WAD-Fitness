@@ -19,9 +19,25 @@ function GetAllExercises($catName)
     }
 }
 
+function GetAllExercisesOfAll(){
+    global $username;
+    global $password;
+    global $connstring;
+    try{
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'SELECT * FROM exercise';
+        $sth = $conn->query($sql);
+        $exercises = $sth->fetchAll(PDO::FETCH_OBJ);
+
+        return $exercises;
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 function GetChosenExercise($exName)
 {
-    include '../php classes/Content.php';
+    include '../php classes/Exercise.php';
 
     global $username;
     global $password;

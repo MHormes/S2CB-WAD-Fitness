@@ -83,6 +83,14 @@ body {
     
 }
 
+.woExercise{
+    grid-area: menus;
+    background-color: #2F4858;
+    color: #86BBD8;
+    padding: 15px;
+    width: 5vw;
+}
+
 @media screen and (max-width: 750px){
     .grid-container {
         display: grid;
@@ -141,6 +149,15 @@ body {
         padding: 15px;
         width: 40vw;
     }
+
+    .woExercise{
+        grid-area: menus;
+        background-color: #2F4858;
+        color: #86BBD8;
+        padding: 15px;
+        width: 40vw;
+    }
+    
 
     .button{
         font-size: 2vw;

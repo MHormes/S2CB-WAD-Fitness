@@ -13,8 +13,6 @@ function SendMessage($name, $email, $message, $userIsLogged)
         $sth = $conn->prepare($sql);
         $sth->execute([':name' => $name, ':email' => $email, ':message' => $message, ':userLogged' => $userIsLogged]);
 
-        $_SESSION['Username'] = $uusername;
-
         $conn= null;
     }catch(PDOException $e){
         echo $e->getMessage();

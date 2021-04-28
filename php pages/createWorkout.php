@@ -4,6 +4,8 @@ include '../includes/categories_template.php';
 include '../includes/exercise_template.php';
 include '../includes/workout_template.php';
 
+$excercises = GetAllExercisesOfAll();
+
 if(isset($_POST['btnConfirmCreate'])){
     CreateNewWorkout($_POST['woName'], $_POST['muscleTrained']);
     header('Location: workout.php');
@@ -47,7 +49,19 @@ if(isset($_POST['btnConfirmCreate'])){
                 <input type="text" name="muscleTrained" id="muscleTrained" required>
                 </br></br>
                 <input class="button" type="submit" name="btnConfirmCreate" value="Confirm new workout">
-                </form>
+            </form>
+            <div class="grid-container2">
+            <!--Populate the specific categorie page with all the exercises-->
+            <?php
+            foreach($excercises as $value){
+                ?>
+            <p1><?php echo $value->Name ?></p1>
+            <input type="checkbox" id="" name="">
+            <?php
+            }
+            ?>
+            
+        </div>
         </div>
     </body>
 </html>
