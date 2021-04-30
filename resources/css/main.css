@@ -51,6 +51,16 @@ body {
     padding: 20px;
 }
 
+.grid-container3 {
+    display: grid;
+    grid-template-areas: 'subheader';
+    grid-template-rows: auto;
+    grid-gap: 2vw;
+    background-color: #33658A;
+    text-align: center;
+    padding: 20px;
+}
+
 .subheader{
     grid-area: subheader;
     background-color: #2F4858;
@@ -112,6 +122,17 @@ body {
             'menus menus'
             'menus menus'
             'menus menus';
+        grid-gap: 2vw;
+        background-color: #33658A;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .grid-container3 {
+        display: grid;
+        grid-template-areas: 
+            'subheader' 
+            'navi navi';
         grid-gap: 2vw;
         background-color: #33658A;
         text-align: center;
