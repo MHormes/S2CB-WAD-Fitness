@@ -3,12 +3,13 @@ session_start();
 include '../includes/categories_template.php';
 include '../includes/exercise_template.php';
 include '../includes/workout_template.php';
-
 $excercises = GetAllExercisesOfAll();
 
-if(isset($_POST['btnConfirmCreate'])){
-    CreateNewWorkout($_POST['woName'], $_POST['muscleTrained']);
-    header('Location: workout.php');
+if(isset($_POST['buttonConfirmWO'])){
+    $exerciseArray = json_decode($_POST['data'], true);
+    CreateNewWorkout($_POST['woName'], $_POST['muscleTrained'], $exerciseArray);
+    /*header('Location: workout.php');*/
+    exit();
 }
 ?>
 
@@ -48,7 +49,7 @@ if(isset($_POST['btnConfirmCreate'])){
                 <h1>Muscle group trained:</h1></br>
                 <input type="text" name="muscleTrained" id="muscleTrained" required>
                 </br></br>
-                <input class="button" type="submit" name="btnConfirmCreate" value="Confirm new workout">
+                <input class="button" id="buttonConfirmWO" type="submit" name="buttonConfirmWO" value="Confirm new workout">
             </form>
             <div class="grid-container2">
             <!--Populate the specific categorie page with all the exercises-->
@@ -56,12 +57,35 @@ if(isset($_POST['btnConfirmCreate'])){
             foreach($excercises as $value){
                 ?>
             <p1><?php echo $value->Name ?></p1>
-            <input type="checkbox" id="" name="">
+            <input type="checkbox" id="<?php echo $value->Name?>" name="exercise">
             <?php
             }
             ?>
             
         </div>
         </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function(){
+    $("#buttonConfirmWO").click(function(){
+        var selectedExercise = [];
+        $(':checkbox[name="exercise"]:checked').each (function () {
+        selectedExercise.push(this.id);
+    });
+    $.ajax({
+        type: 'post',
+        url: "",
+        data: { data: JSON.stringify(selectedExercise) },
+        success: function(){
+        alert('OK');
+    }
+    });
+        });
+    });
+    </script>
+
     </body>
 </html>
+
