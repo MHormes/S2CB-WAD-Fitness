@@ -1,13 +1,16 @@
 <?php
 include '../includes/exercise_template.php';
 include '../includes/connection_template.php';
+include '../includes/favorite_template.php';
 session_start();
 $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
+global $userLogged;
 
 if(isset($_SESSION['loggedin']))
 {
     include_once '../includes/user_template.php';
+    $userLogged = $_SESSION['Username'];
     $user = GetUserDetails($_SESSION['Username']);
 }
 if(isset($_POST['btnDelete']))
@@ -26,6 +29,16 @@ else if(isset($_POST['btnConfirmUpdate'])){
 }
 else{
     $exercise = GetChosenExercise($exerciseName);
+}
+if(isset($_POST['btnAddToFavorites']))
+{
+    NewFavorite($userLogged, $exerciseName);
+    header("Refresh:0");
+}
+if(isset($_POST['btnRemoveFromFavorites']))
+{
+    RemoveFavorite($userLogged, $exerciseName);
+    header("Refresh:0");
 }
 ?>
 <!DOCTYPE html>
@@ -74,8 +87,8 @@ else{
 
                 <h1>Estimated duration of the exercise (in minutes):</h1></br>
                 <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
+                <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
                 </br></br>
-                    <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
                 </form>
 
                 <!--Standard view for everyone-->
@@ -92,6 +105,15 @@ else{
                     <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
                     </br>
                     <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation)">
+                </form>
+                <?php } ?>
+                 <?php if(isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?> 
+                <form action="" method="post">
+                    <?php if(is_null(GetFavoriteDetails($_SESSION['Username'], $exerciseName))): ?>
+                    <input class="button" type="button" name="btnAddToFavorites" value="Add to favorites">
+                    <?php else: ?>
+                    <input class="button" type="button" name="btnRemoveFromFavorites" value="Remove from favorites">
+                    <?php endif; ?>
                 </form>
                 <?php } ?>
             <?php } ?>
