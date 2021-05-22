@@ -28,6 +28,50 @@ function GetFavoriteDetails($userUsername, $exName)
     }
 }
 
+function GetFavoritesCategories($userUsername)
+{
+    global $username;
+    global $password;
+    global $connstring;
+    include '../php classes/Favorite.php';
+    try{
+
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'SELECT DISTINCT MuscleTrained FROM favorite, exercise WHERE favorite.Name = exercise.Name and favorite.UserName = :userUsername';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':userUsername' => $userUsername]);
+
+        $categories = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $categories;
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function GetFavoritesExercises($userUsername, $catName)
+{
+    global $username;
+    global $password;
+    global $connstring;
+    include '../php classes/Favorite.php';
+    try{
+
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'SELECT DISTINCT * FROM favorite, exercise WHERE favorite.Name = exercise.Name AND favorite.UserName = :userUsername AND exercise.MuscleTrained = :catName';
+        $sth = $conn->prepare($sql);
+        
+        $sth->execute([':userUsername' => $userUsername]);
+        $sth->execute([':catName' => $catName]);
+
+        $exercises = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $exercises;
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 function NewFavorite($userUsername, $exName)
 {
     global $username;
