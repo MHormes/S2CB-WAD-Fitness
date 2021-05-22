@@ -33,7 +33,6 @@ $categories = GetFavoritesCategories($user);
            
             <!--Populate the categorie page with all the categories-->
             <?php
-            
             foreach($categories as $value)
             { ?>
             <a href="favCategories.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/></br><?php echo $value->MuscleTrained; ?></div></a>

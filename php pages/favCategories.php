@@ -1,8 +1,6 @@
 <?php
 session_start();
 include '../includes/favorite_template.php';
-include '../includes/categories_template.php';
-include '../includes/exercise_template.php';
 $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 
@@ -35,7 +33,7 @@ $excercises = GetFavoritesExercises($user, $catName);
         </div>
         
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exercises for categorie: " . $catName; ?>
+            <div class="subheader"><?php echo "Showing all exercises for category: " . $catName; ?>
             </div>
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
