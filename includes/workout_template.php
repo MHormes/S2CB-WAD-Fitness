@@ -8,7 +8,7 @@ function GetAllWorkouts()
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT * FROM Workout';
+        $sql = 'SELECT DISTINCT Name FROM workout';
 
         $query = $conn->query($sql);
         $workouts = $query->fetchAll(PDO::FETCH_OBJ);
@@ -19,24 +19,36 @@ function GetAllWorkouts()
     }
 }
 
-function CreateNewWorkout($woName, $muscleTrained, $exerciseName){
-
+function GetAllExercisesForWorkout($woName){
     global $username;
     global $password;
     global $connstring;
-    
-    foreach($exerciseName as $value)
-        try{
-            $conn = new PDO($connstring,$username, $password);
-            $sql = 'INSERT INTO workout VALUES(:woName, :muscleTrained, :exerciseName)';
-            $sth = $conn->prepare($sql);
-            $sth->execute([':woName' => $woName, ':muscleTrained' => $muscleTrained, ':exerciseName' => $value]);
-            $conn = null;
-            
-        }catch(PDOException $e){
-            echo $e->getMessage();
-        }
-    
-    
+    try{
+
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'SELECT * FROM workout WHERE Name = :woName';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':woName' => $woName]);
+        $exercises = $sth->fetchAll(PDO::FETCH_OBJ);
+
+        return $exercises;
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function RemoveWorkout($woName){
+    global $username;
+    global $password;
+    global $connstring;
+    try{
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'DELETE FROM workout WHERE Name = :woName';
+        $sth = $conn->prepare($sql);
+        $sth->execute([':woName' => $woName]);
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
 }
 ?>
