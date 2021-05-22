@@ -40,7 +40,7 @@ if(isset($_POST['btnUpdate']))
             <div class="grid-container3">
              <div class="subheader">My page</div>
                 <a href="favexercises.php"><div class="navi">Favorite exercises</div></a>
-                <a href="myinformations.php"><div class="navi">Personal informations</div></a>
+                <a href="myinformations.php"><div class="navi">Personal information</div></a>
             </div>
         <?php
         }

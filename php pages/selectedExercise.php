@@ -110,9 +110,9 @@ if(isset($_POST['btnRemoveFromFavorites']))
                  <?php if(isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?> 
                 <form action="" method="post">
                     <?php if(is_null(GetFavoriteDetails($_SESSION['Username'], $exerciseName))): ?>
-                    <input class="button" type="button" name="btnAddToFavorites" value="Add to favorites">
+                    <input class="button" type="submit" name="btnAddToFavorites" value="Add to favorites">
                     <?php else: ?>
-                    <input class="button" type="button" name="btnRemoveFromFavorites" value="Remove from favorites">
+                    <input class="button" type="submit" name="btnRemoveFromFavorites" value="Remove from favorites">
                     <?php endif; ?>
                 </form>
                 <?php } ?>

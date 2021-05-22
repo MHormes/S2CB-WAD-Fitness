@@ -71,10 +71,10 @@ $excercises = GetAllExercisesOfAll();
     });
     $.ajax({
         type: 'post',
-        url: "../includes/workout_template.php",
-        data: { exercise: $("[id$='woName']").val(), exercise: $("[id$='muscleTrained']").val(), array: JSON.stringify(selectedExercise) },
+        url: "../includes/workout_test_template.php",
+        data: { workoutName: $("[id$='woName']").val(), muscleTrained: $("[id$='muscleTrained']").val(), selectedExcerciseArray: selectedExercise },
         success:function(result){
-                console.log(result.abc);
+                console.log(result);
         }
     });
         });
