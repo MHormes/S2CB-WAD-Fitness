@@ -58,7 +58,6 @@ if(isset($_POST['btnLogin']))
                 if(isset($_COOKIE['loginMessage'])){
                     echo $_COOKIE['loginMessage'];
                 }
-                
                 ?>
             </div>
         </section>
