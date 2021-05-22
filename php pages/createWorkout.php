@@ -5,12 +5,6 @@ include '../includes/exercise_template.php';
 include '../includes/workout_template.php';
 $excercises = GetAllExercisesOfAll();
 
-if(isset($_POST['buttonConfirmWO'])){
-    $exerciseArray = json_decode($_POST['data'], true);
-    CreateNewWorkout($_POST['woName'], $_POST['muscleTrained'], $exerciseArray);
-    /*header('Location: workout.php');*/
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +37,7 @@ if(isset($_POST['buttonConfirmWO'])){
         <div class="grid-container-content">
             <div class="subheader">Create a new workout</div>     
             <div class="content-information">
-            <form action="" method="post">
+            <form action="#" onsubmit="return false">
                 <h1>Name of the workout:</h1></br>
                 <input type="text" name="woName" id="woName" required>
                 <h1>Muscle group trained:</h1></br>
@@ -73,14 +67,15 @@ if(isset($_POST['buttonConfirmWO'])){
         var selectedExercise = [];
         $(':checkbox[name="exercise"]:checked').each (function () {
         selectedExercise.push(this.id);
+        console.log(selectedExercise);
     });
     $.ajax({
         type: 'post',
-        url: "",
-        data: { data: JSON.stringify(selectedExercise) },
-        success: function(){
-        alert('OK');
-    }
+        url: "../includes/workout_template.php",
+        data: { exercise: $("[id$='woName']").val(), exercise: $("[id$='muscleTrained']").val(), array: JSON.stringify(selectedExercise) },
+        success:function(result){
+                console.log(result.abc);
+        }
     });
         });
     });
