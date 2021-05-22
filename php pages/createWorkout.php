@@ -71,16 +71,16 @@ $excercises = GetAllExercisesOfAll();
     });
     $.ajax({
         type: 'post',
-        url: "../includes/workout_test_template.php",
+        url: "../includes/workout_create_template.php",
         data: { workoutName: $("[id$='woName']").val(), muscleTrained: $("[id$='muscleTrained']").val(), selectedExcerciseArray: selectedExercise },
         success:function(result){
                 console.log(result);
         }
     });
+    window.location.replace('workout.php');
         });
     });
     </script>
-
     </body>
 </html>
 

@@ -18,7 +18,6 @@ function CreateNewWorkout($woName, $muscleTrained, $exerciseName){
             $sth = $conn->prepare($sql);
             $sth->execute([':woName' => $woName, ':muscleTrained' => $muscleTrained, ':exerciseName' => $value]);
             $conn = null;
-            
         }catch(PDOException $e){
             echo $e->getMessage();
         }

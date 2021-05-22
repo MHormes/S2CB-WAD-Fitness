@@ -5,11 +5,17 @@ include '../includes/exercise_template.php';
 include '../includes/workout_template.php';
 $_SESSION['woName'] = $_GET['woName'];
 $woName = $_SESSION['woName'];
+$excercises = GetAllExercisesForWorkout($woName);
 
 if(isset($_SESSION['loggedin']))
 {
     include_once '../includes/user_template.php';
     $user = GetUserDetails($_SESSION['Username']);
+}
+
+if(isset($_POST['btnRemoveWorkout'])){
+RemoveWorkout($woName);
+header('Location: workout.php');
 }
 ?>
 
@@ -38,11 +44,20 @@ if(isset($_SESSION['loggedin']))
         </div>
 
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing workout: " . $woName; ?>
+            <div class="subheader"><?php echo "Showing exercises in workout: " . $woName; ?>
             <?php if(isset($_SESSION['loggedin']) && $user->GetRole() == 'admin'){ ?>
                 <form action="#" method="post"><input class="button" type="submit" name="btnUpdateWorkout" value="Update workout"></form>
+                <form action="#" method="post"><input class="button" type="submit" name="btnRemoveWorkout" value="Remove workout(Deletes the workout without any confirmation)"></form>
             <?php } ?>
             </div>
+            <?php
+            foreach($excercises as $value){
+                ?>
+            <a href="selectedExercise.php?exName=<?php echo $value->exerciseName; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/></br><?php echo $value->exerciseName; ?></div></a>
+            <?php
+            }
+            ?>
+            
         </div>
     </body>
 </html>
