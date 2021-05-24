@@ -1,13 +1,8 @@
 <?php
 session_start();
-include '../includes/user_template.php';
-
-if(isset($_POST['btnUpdate']))
-{
-    UpdateAccount($_SESSION['Username'], $_POST['ufname'], $_POST['ulname'], $_POST['uusername'], $_POST['upassword'], $_POST['uemail']);
-    header('Location: mypage.php');
-    exit();
-}
+include '../includes/favoriteWorkouts_template.php';
+$user = $_SESSION['Username'];
+$categories = GetFavoritesCategories($user);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +13,6 @@ if(isset($_POST['btnUpdate']))
         <meta name="description" content="Fintess website">
         <title>AM Fitness</title>
         <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
-        <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
     </head>
     <body>
         <div class="grid-container">
@@ -34,20 +28,17 @@ if(isset($_POST['btnUpdate']))
             <a href="login.php"><div class="navi">Login</div></a>
             <?php endif; ?>
         </div>
-        <?php
-        if(isset($_SESSION['Username'])){
-            echo "Welcome to your own page, " . $_SESSION['Username']; ?>
-            <div class="grid-container3">
-             <div class="subheader">My page</div>
-                <a href="favorite.php"><div class="navi">Favorite exercises</div></a>
-                <a href="favoriteWorkouts.php"><div class="navi">Favorite workouts</div></a>
-                <a href="myinformations.php"><div class="navi">Personal informations</div></a>
-            </div>
-        <?php
-        }
-        else{
-            echo "To see your page please log-in";
-        }
-        ?>
+        
+        <div class="grid-container2">
+           
+            <!--Populate the categorie page with all the categories-->
+            <?php
+            foreach($categories as $value)
+            { ?>
+            <a href="favCategories.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/></br><?php echo $value->MuscleTrained; ?></div></a>
+            <?php
+            }
+            ?>
+        </div>
     </body>
 </html>

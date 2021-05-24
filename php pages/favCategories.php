@@ -5,7 +5,7 @@ $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 
 $user = $_SESSION['Username'];
-$excercises = GetFavoritesExercises($user, $catName);
+$exercises = GetFavoritesExercises($user, $catName);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ $excercises = GetFavoritesExercises($user, $catName);
             </div>
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
-            foreach($excercises as $value){
+            foreach($exercises as $value){
                 ?>
             <a href="favExercises.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/></br><?php echo $value->Name; ?></div></a>
             <?php
