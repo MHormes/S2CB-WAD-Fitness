@@ -1,14 +1,12 @@
 <?php
 session_start();
 include '../includes/favorite_template.php';
-include '../includes/categories_template.php';
-include '../includes/exercise_template.php';
 $_SESSION['catName'] = $_GET['catName'];
 $catName = $_SESSION['catName'];
 
 $user = $_SESSION['Username'];
-$excercises = GetFavoritesExercises($user, $catName);
-
+$exercises = GetFavoritesExercises($user, $catName);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -35,11 +33,11 @@ $excercises = GetFavoritesExercises($user, $catName);
         </div>
         
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exercises for categorie: " . $catName; ?>
+            <div class="subheader"><?php echo "Showing all exercises for category: " . $catName; ?>
             </div>
             <!--Populate the specific categorie page with all the exercises for this categorie-->
             <?php
-            foreach($excercises as $value){
+            foreach($exercises as $value){
                 ?>
             <a href="selectedExercise.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/></br><?php echo $value->Name; ?></div></a>
             <?php

@@ -39,7 +39,7 @@ if(isset($_SESSION['loggedin']))
         </div>
 
         <div class="grid-container2">
-            <div class="subheader"><?php echo "Showing all exersices for categorie: " . $catName; ?>
+            <div class="subheader"><?php echo "Showing all exercises for category: " . $catName; ?>
             <?php if(isset($_SESSION['loggedin']) && $user->GetRole() == 'admin'){ ?>
                 <form action="createExercise.php" method="post"><input class="button" type="submit" name="btnNewExercise" value="Create new exercise"></form>
             <?php } ?>

@@ -1,17 +1,17 @@
 <?php
 include '../includes/connection_template.php';
-function GetFavoriteDetails($userUsername, $exName)
+function GetFavoriteWorkoutDetails($userUsername, $workoutName)
 {
     global $username;
     global $password;
     global $connstring;
-    include '../php classes/FavoriteExercise.php';
+    include '../php classes/FavoriteWorkout.php';
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT * FROM favoriteexercise WHERE UserName = :userUsername AND Name = :exerciseName';
+        $sql = 'SELECT * FROM favoriteworkout WHERE UserName = :userUsername AND Name = :workoutName';
         $sth = $conn->prepare($sql);
-        $sth->execute([':userUsername' => $userUsername, ':exerciseName' => $exName]);
+        $sth->execute([':userUsername' => $userUsername, ':workoutName' => $workoutName]);
 
         $result = $sth->fetchAll(PDO::FETCH_OBJ);
         
@@ -20,7 +20,7 @@ function GetFavoriteDetails($userUsername, $exName)
             return null;
         }
         else{
-         $newFavorite = new FavoriteExercise($result[0]->UserName, $result[0]->Name);
+         $newFavorite = new FavoriteWorkout($result[0]->UserName, $result[0]->Name);
          return $newFavorite;   
         }
     }catch(PDOException $e){
@@ -28,16 +28,16 @@ function GetFavoriteDetails($userUsername, $exName)
     }
 }
 
-function GetFavoritesCategories($userUsername)
+function GetFavoritesWorkoutCategories($userUsername)
 {
     global $username;
     global $password;
     global $connstring;
-    include '../php classes/FavoriteExercise.php';
+    include '../php classes/FavoriteWorkout.php';
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT DISTINCT MuscleTrained FROM favoriteexercise as Fe INNER JOIN exercise as e ON Fe.Name = e.Name WHERE Fe.UserName = :userUsername';
+        $sql = 'SELECT DISTINCT Fw.Name FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name WHERE Fw.UserName = :userUsername';
         $sth = $conn->prepare($sql);
         $sth->execute([':userUsername' => $userUsername]);
 
@@ -54,11 +54,11 @@ function GetFavoritesExercises($userUsername, $catName)
     global $username;
     global $password;
     global $connstring;
-    include '../php classes/FavoriteExercise.php';
+    include '../php classes/FavoriteWorkout.php';
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT DISTINCT * FROM favoriteexercise as Fe INNER JOIN exercise as e ON Fe.Name = e.Name WHERE Fe.UserName = :userUsername AND e.MuscleTrained = :catName';
+        'SELECT DISTINCT * FROM favoriteworkout as Fw INNER JOIN exercise as e ON Fw.Name = e.Name WHERE Fw.UserName = :userUsername AND e.MuscleTrained = :catName';
         $sth = $conn->prepare($sql);
         
         $sth->execute([':userUsername' => $userUsername, ':catName' => $catName]);
@@ -71,18 +71,17 @@ function GetFavoritesExercises($userUsername, $catName)
     }
 }
 
-function NewFavorite($userUsername, $exName)
+function NewFavoriteWorkout($userUsername, $workoutName)
 {
     global $username;
     global $password;
     global $connstring;
-    include '../php classes/FavoriteExercise.php';
     
     try{
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'INSERT INTO favoriteexercise VALUES(:userName, :exerciseName)';
+        $sql = 'INSERT INTO favoriteworkout VALUES(:userName, :workoutName)';
         $sth = $conn->prepare($sql);
-        $sth->execute([':userName' => $userUsername, ':exerciseName' => $exName]);
+        $sth->execute([':userName' => $userUsername, ':workoutName' => $workoutName]);
 
         $conn= null;
     }catch(PDOException $e){
@@ -90,18 +89,17 @@ function NewFavorite($userUsername, $exName)
     }
 }
 
-function RemoveFavorite($userUsername, $exName)
+function RemoveFavoriteWorkout($userUsername, $workoutName)
 {
     global $username;
     global $password;
     global $connstring;
-    include '../php classes/FavoriteExercise.php';
 
     try{
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'DELETE FROM favoriteexercise WHERE UserName = :userUsername AND Name = :exerciseName';
+        $sql = 'DELETE FROM favoriteworkout WHERE UserName = :userUsername AND Name = :workoutName';
         $sth = $conn->prepare($sql);
-        $sth->execute([':userUsername' => $userUsername, ':exerciseName' => $exName]);
+        $sth->execute([':userUsername' => $userUsername, ':workoutName' => $workoutName]);
 
         $conn= null;
     }catch(PDOException $e){

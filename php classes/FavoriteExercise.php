@@ -1,6 +1,6 @@
 <?php
 
-class Favorite{
+class FavoriteExercise{
 
     public $username;
     public $exerciseName;
