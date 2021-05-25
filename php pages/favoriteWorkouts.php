@@ -2,7 +2,7 @@
 session_start();
 include '../includes/favoriteWorkouts_template.php';
 $user = $_SESSION['Username'];
-$categories = GetFavoritesCategories($user);
+$categories = GetFavoritesWorkoutCategories($user);
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ $categories = GetFavoritesCategories($user);
             <?php
             foreach($categories as $value)
             { ?>
-            <a href="favCategories.php?catName=<?php echo $value->MuscleTrained; ?>"><div class="menu"><img src="../resources/pictures/legs.jpg" style="width: 100%"/></br><?php echo $value->MuscleTrained; ?></div></a>
+            <a href="favCategories.php?catName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/pre-made.jpg" style="width: 100%"/></br></div></a>
             <?php
             }
             ?>

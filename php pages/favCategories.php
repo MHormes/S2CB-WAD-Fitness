@@ -39,7 +39,7 @@ $exercises = GetFavoritesExercises($user, $catName);
             <?php
             foreach($exercises as $value){
                 ?>
-            <a href="favExercises.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/></br><?php echo $value->Name; ?></div></a>
+            <a href="selectedExercise.php?exName=<?php echo $value->Name; ?>"><div class="menu"><img src="../resources/pictures/exercise.jpg" style="width: 100%"/></br><?php echo $value->Name; ?></div></a>
             <?php
             }
             ?>
