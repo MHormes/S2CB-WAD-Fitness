@@ -95,7 +95,7 @@ $excercises = GetAllExercisesOfAll();
                             console.log(result);
                         }
                     });
-                    window.location.replace('workout.php');
+                    window.location.replace('workoutPage.php');
                 });
             });
         </script>

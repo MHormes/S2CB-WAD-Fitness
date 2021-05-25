@@ -4,7 +4,6 @@ include '../includes/categories_template.php';
 include '../includes/exercise_template.php';
 include '../includes/workout_template.php';
 include '../includes/favoriteWorkouts_template.php';
-
 $_SESSION['woName'] = $_GET['woName'];
 $woName = $_SESSION['woName'];
 global $userLogged;
@@ -16,17 +15,12 @@ if (isset($_SESSION['loggedin'])) {
 }
 if (isset($_POST['btnRemoveWorkout'])) {
     RemoveWorkout($woName);
-    header('Location: workout.php');
+    header('Location: workoutPage.php');
 } else if (isset($_POST['btnUpdateWorkout'])) {
     $_SESSION['editModeWorkout'] = "true";
     $workout = GetSelectedWorkout($woName);
     $excercises = GetAllExercisesOfAll();
     $exercisesOfWorkout = GetAllExercisesForWorkout($woName);
-} else if (isset($_POST['btnUpdateWorkoutConfirm'])) {
-    unset($_SESSION['editModeWorkout']);
-    $excercises = GetAllExercisesForWorkout($woName);
-    /*RemoveWorkout($woName);
-    CreateNewWorkout($woName, );*/
 } else {
     $excercises = GetAllExercisesForWorkout($woName);
     unset($_SESSION['editModeWorkout']);
@@ -86,7 +80,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
         <div class="grid-container-content">
             <div class="subheader"><?php echo "Updating workout: " . $woName; ?></div>
             <div class="content-information">
-                <form action="#" method="post">
+                <form action="#" onsubmit="return false">
                     <h1>Name of the workout:</h1></br>
                     <input type="text" name="woName" id="woName" value="<?php echo $workout->GetWOName() ?>" required>
                     <h1>Muscle group trained:</h1></br>
@@ -150,7 +144,32 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
 
             </div>
 
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#btnUpdateWorkoutConfirm").click(function() {
+                        var selectedExercise = [];
+                        $(':checkbox[name="exercise"]:checked').each(function() {
+                            selectedExercise.push(this.id);
+                            console.log(selectedExercise);
+                        });
+                        $.ajax({
+                            type: 'post',
+                            url: "../includes/workout_create_template.php",
+                            data: {
+                                workoutName: $("[id$='woName']").val(),
+                                muscleTrained: $("[id$='muscleTrained']").val(),
+                                selectedExcerciseArray: selectedExercise
+                            },
+                            success: function(result) {
+                                console.log(result);
+                            }
+                        });
+                        window.location.replace("selectedWorkout.php?woName=<?php echo $woName ?>");
+                    });
+                });
+            </script>
 </body>
 
 </html>
