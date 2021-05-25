@@ -97,4 +97,3 @@ function CreateAccount($firstName, $secondName, $uusername, $upassword, $email)
     $_SESSION['UsernameReg'] = $_POST["username"];
     header('Location: login.php');
 }
-?>

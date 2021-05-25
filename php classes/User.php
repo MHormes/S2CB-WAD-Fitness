@@ -49,5 +49,3 @@ public function GetRole(){
         return "Welkom $this->username";
     }
 }
-
-?>

@@ -72,4 +72,3 @@ function RemoveWorkout($woName){
         echo $e->getMessage();
     }
 }
-?>

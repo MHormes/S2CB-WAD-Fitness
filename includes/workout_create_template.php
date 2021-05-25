@@ -22,4 +22,3 @@ function CreateNewWorkout($woName, $muscleTrained, $exerciseName){
             echo $e->getMessage();
         }
     }
-?>

@@ -106,4 +106,3 @@ function RemoveFavoriteWorkout($userUsername, $workoutName)
         echo $e->getMessage();
     }
 }
-?>

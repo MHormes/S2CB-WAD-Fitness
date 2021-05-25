@@ -25,4 +25,3 @@ class Workout{
         return $this->exercises;
     }
 }
-?>

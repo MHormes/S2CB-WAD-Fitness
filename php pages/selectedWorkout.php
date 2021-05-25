@@ -31,14 +31,12 @@ if (isset($_POST['btnRemoveWorkout'])) {
     $excercises = GetAllExercisesForWorkout($woName);
     unset($_SESSION['editModeWorkout']);
 }
-if(isset($_POST['btnAddToFavoriteWorkouts']))
-{
+if (isset($_POST['btnAddToFavoriteWorkouts'])) {
     NewFavoriteWorkout($userLogged, $woName);
     header("Refresh:0");
 }
 
-if(isset($_POST['btnRemoveFromFavoriteWorkouts']))
-{
+if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
     RemoveFavoriteWorkout($userLogged, $woName);
     header("Refresh:0");
 }
@@ -125,15 +123,15 @@ if(isset($_POST['btnRemoveFromFavoriteWorkouts']))
             <div class="grid-container2">
                 <div class="subheader"><?php echo "Showing exercises for workout: " . $woName; ?>
                     <!-- normal view-->
-                    <?php if(isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?> 
+                    <?php if (isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?>
                         <form action="" method="post">
-                            <?php if(is_null(GetFavoriteWorkoutDetails($_SESSION['Username'], $woName))): ?>
-                            <input class="button" type="submit" name="btnAddToFavoriteWorkouts" value="Add to favorites">
-                            <?php else: ?>
-                            <input class="button" type="submit" name="btnRemoveFromFavoriteWorkouts" value="Remove from favorites">
+                            <?php if (is_null(GetFavoriteWorkoutDetails($_SESSION['Username'], $woName))) : ?>
+                                <input class="button" type="submit" name="btnAddToFavoriteWorkouts" value="Add to favorites">
+                            <?php else : ?>
+                                <input class="button" type="submit" name="btnRemoveFromFavoriteWorkouts" value="Remove from favorites">
                             <?php endif; ?>
                         </form>
-                        <?php } ?>
+                    <?php } ?>
                     <?php if (isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?>
                         <form action="#" method="post"><input class="button" type="submit" name="btnUpdateWorkout" value="Update workout"></form>
                         <form action="#" method="post"><input class="button" type="submit" name="btnRemoveWorkout" value="Remove workout(Deletes the workout without any confirmation)"></form>

@@ -18,4 +18,3 @@ function SendMessage($name, $email, $message, $userIsLogged)
         echo $e->getMessage();
     }
 }
-?>

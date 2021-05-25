@@ -108,4 +108,3 @@ function RemoveFavorite($userUsername, $exName)
         echo $e->getMessage();
     }
 }
-?>

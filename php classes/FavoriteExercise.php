@@ -18,4 +18,3 @@ class FavoriteExercise{
         return $this->exerciseName;
     }
 }
-?>

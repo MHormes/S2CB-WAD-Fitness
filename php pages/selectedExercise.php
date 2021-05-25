@@ -7,118 +7,130 @@ $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
 global $userLogged;
 
-if(isset($_SESSION['loggedin']))
-{
+if (isset($_SESSION['loggedin'])) {
     include_once '../includes/user_template.php';
     $userLogged = $_SESSION['Username'];
     $user = GetUserDetails($_SESSION['Username']);
 }
-if(isset($_POST['btnDelete']))
-{
+if (isset($_POST['btnDelete'])) {
     DeleteExercise($exerciseName);
     header("Location: categories.php");
-}
-else if(isset($_POST['btnUpdate'])){
-   $_SESSION['editMode'] = "true";
-   $exercise = GetChosenExercise($exerciseName);
-}
-else if(isset($_POST['btnConfirmUpdate'])){
+} else if (isset($_POST['btnUpdate'])) {
+    $_SESSION['editMode'] = "true";
+    $exercise = GetChosenExercise($exerciseName);
+} else if (isset($_POST['btnConfirmUpdate'])) {
     unset($_SESSION['editMode']);
     UpdateExercise($exerciseName, $_POST['muscleTrained'], $_POST['reps'], $_POST['setsnumber'], $_POST['timeDuration']);
     $exercise = GetChosenExercise($exerciseName);
-}
-else{
+} else {
     $exercise = GetChosenExercise($exerciseName);
+    unset($_SESSION['editMode']);
 }
-if(isset($_POST['btnAddToFavorites']))
-{
+if (isset($_POST['btnAddToFavorites'])) {
     NewFavorite($userLogged, $exerciseName);
     header("Refresh:0");
 }
-if(isset($_POST['btnRemoveFromFavorites']))
-{
+if (isset($_POST['btnRemoveFromFavorites'])) {
     RemoveFavorite($userLogged, $exerciseName);
     header("Refresh:0");
 }
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Fintess website">
-        <title>AM Fitness</title>
-        <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
-        <link rel="stylesheet" type="text/css" href="../resources/css/content.css">
-    </head>
-    <body>
-        <div class="grid-container">
-            <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
-            <a href="contact.php"><div class="navi">Contact</div></a>
-            <a href="workoutPage.php"><div class="navi">Pre-made workouts</div></a>
-            <a href="categories.php"><div class="navi">Categories</div></a>
-            <a href="mypage.php"><div class="navi">My page</div></a>
-            
-            <!--Login button-->
-            <?php if(isset($_SESSION['loggedin'])): ?>
-            <a href="logout.php"><div class="navi">Logout</div></a>
-            <?php else: ?>
-            <a href="login.php"><div class="navi">Login</div></a>
-            <?php endif; ?>
 
-        </div>
-        
-        <!--Edit mode enabled/update view for admin editing page -->
-        <div class="grid-container-content">
-            <div class="subheader"><?php echo "Showing page for exercise: " . $exercise->GetExerciseName(); ?></div>
-            <?php if(isset($_SESSION['editMode']))
-            {?>
-                <a href=""><div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%"/></div></a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fintess website">
+    <title>AM Fitness</title>
+    <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/content.css">
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
+        <a href="contact.php">
+            <div class="navi">Contact</div>
+        </a>
+        <a href="workoutPage.php">
+            <div class="navi">Pre-made workouts</div>
+        </a>
+        <a href="categories.php">
+            <div class="navi">Categories</div>
+        </a>
+        <a href="mypage.php">
+            <div class="navi">My page</div>
+        </a>
+
+        <!--Login button-->
+        <?php if (isset($_SESSION['loggedin'])) : ?>
+            <a href="logout.php">
+                <div class="navi">Logout</div>
+            </a>
+        <?php else : ?>
+            <a href="login.php">
+                <div class="navi">Login</div>
+            </a>
+        <?php endif; ?>
+
+    </div>
+
+    <!--Edit mode enabled/update view for admin editing page -->
+    <div class="grid-container-content">
+        <div class="subheader"><?php echo "Showing page for exercise: " . $exercise->GetExerciseName(); ?></div>
+        <?php if (isset($_SESSION['editMode'])) { ?>
+            <a href="">
+                <div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%" /></div>
+            </a>
             <div class="content-information">
-            <form action="" method="post">
-                <h1>This exercise is used to train your:</h1></br>
-                <input type="text" name="muscleTrained" id="muscleTrained" value=<?php echo $exercise->GetMuscleTrained(); ?> required>
+                <form action="" method="post">
+                    <h1>This exercise is used to train your:</h1></br>
+                    <input type="text" name="muscleTrained" id="muscleTrained" value=<?php echo $exercise->GetMuscleTrained(); ?> required>
 
-                <h1>Recommended amount of Repetitions:</h1></br>
-                <input type="number" name="reps" id="reps" value=<?php echo $exercise->GetRepsNumber(); ?> required>
+                    <h1>Recommended amount of Repetitions:</h1></br>
+                    <input type="number" name="reps" id="reps" value=<?php echo $exercise->GetRepsNumber(); ?> required>
 
-                <h1>Recommended amount of sets:</h1></br>
-                <input type="number" name="setsnumber" id="setsnumber" value=<?php echo $exercise->GetSetsNumber(); ?> required>
+                    <h1>Recommended amount of sets:</h1></br>
+                    <input type="number" name="setsnumber" id="setsnumber" value=<?php echo $exercise->GetSetsNumber(); ?> required>
 
-                <h1>Estimated duration of the exercise (in minutes):</h1></br>
-                <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
-                </br></br>
-                <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
-                </br></br>
+                    <h1>Estimated duration of the exercise (in minutes):</h1></br>
+                    <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
+                    </br></br>
+                    <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
+                    </br></br>
                 </form>
 
                 <!--Standard view for everyone-->
-      <?php }  else { ?>
-                    <a href=""><div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%"/></div></a>
+            <?php } else { ?>
+                <a href="">
+                    <div class="content-video"><img src="../resources/pictures/VideoCap.png" style="width:100%" /></div>
+                </a>
                 <div class="content-information">
-                <h1><?php echo "This exercise is used to train your ". $exercise->GetMuscleTrained(); ?></h1></br>
-                <h1><?php echo "Recommended amount of Repetitions: ". $exercise->GetRepsNumber();?></h1></br>
-                <h1><?php echo "Recommended amount of sets: ". $exercise->GetSetsNumber();?></h1></br>
-                <h1><?php echo "Estimated duration of the exercise: ". $exercise->GetTimeDuration(). " minutes";?></h1></br>
-                <!--If a admin is logged in, Show update and delete button-->
-                <?php if(isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?> 
-                <form action="" method="post">
-                    <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
-                    </br>
-                    <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation)">
-                </form>
+                    <h1><?php echo "This exercise is used to train your " . $exercise->GetMuscleTrained(); ?></h1></br>
+                    <h1><?php echo "Recommended amount of Repetitions: " . $exercise->GetRepsNumber(); ?></h1></br>
+                    <h1><?php echo "Recommended amount of sets: " . $exercise->GetSetsNumber(); ?></h1></br>
+                    <h1><?php echo "Estimated duration of the exercise: " . $exercise->GetTimeDuration() . " minutes"; ?></h1></br>
+                    <!--If a admin is logged in, Show update and delete button-->
+                    <?php if (isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?>
+                        <form action="" method="post">
+                            <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
+                            </br>
+                            <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation)">
+                        </form>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?>
+                        <form action="" method="post">
+                            <?php if (is_null(GetFavoriteDetails($_SESSION['Username'], $exerciseName))) : ?>
+                                <input class="button" type="submit" name="btnAddToFavorites" value="Add to favorites">
+                            <?php else : ?>
+                                <input class="button" type="submit" name="btnRemoveFromFavorites" value="Remove from favorites">
+                            <?php endif; ?>
+                        </form>
+                    <?php } ?>
                 <?php } ?>
-                 <?php if(isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?> 
-                <form action="" method="post">
-                    <?php if(is_null(GetFavoriteDetails($_SESSION['Username'], $exerciseName))): ?>
-                    <input class="button" type="submit" name="btnAddToFavorites" value="Add to favorites">
-                    <?php else: ?>
-                    <input class="button" type="submit" name="btnRemoveFromFavorites" value="Remove from favorites">
-                    <?php endif; ?>
-                </form>
-                <?php } ?>
-            <?php } ?>
+                </div>
             </div>
-        </div>
-    </body>
+</body>
+
 </html>

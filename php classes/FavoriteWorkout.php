@@ -15,7 +15,6 @@ class FavoriteWorkout{
     }
 
     public function GetWorkoutName(){
-        return $this->$workoutName;
+        return $this->workoutName;
     }
 }
-?>

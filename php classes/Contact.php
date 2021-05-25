@@ -2,7 +2,7 @@
 
 class Contact{
 
-    public $name
+    public $name;
     private $email;
     private $message;
     private $userIsLogged;
@@ -14,4 +14,3 @@ class Contact{
         $this->userIsLogged = $userIsLogged;
     }
 }
-?>

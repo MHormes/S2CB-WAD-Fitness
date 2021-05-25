@@ -106,4 +106,3 @@ function DeleteExercise($exName){
         echo $e->getMessage();
     }
 }
-?>

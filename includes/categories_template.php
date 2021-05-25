@@ -19,4 +19,3 @@ function GetAllCategories()
         echo $e->getMessage();
     }
 }
-?>
