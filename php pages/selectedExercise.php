@@ -55,7 +55,7 @@ if(isset($_POST['btnRemoveFromFavorites']))
         <div class="grid-container">
             <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
             <a href="contact.php"><div class="navi">Contact</div></a>
-            <a href="workout.php"><div class="navi">Pre-made workouts</div></a>
+            <a href="workoutPage.php"><div class="navi">Pre-made workouts</div></a>
             <a href="categories.php"><div class="navi">Categories</div></a>
             <a href="mypage.php"><div class="navi">My page</div></a>
             
@@ -87,6 +87,7 @@ if(isset($_POST['btnRemoveFromFavorites']))
 
                 <h1>Estimated duration of the exercise (in minutes):</h1></br>
                 <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
+                </br></br>
                 <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
                 </br></br>
                 </form>
