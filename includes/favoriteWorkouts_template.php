@@ -49,7 +49,7 @@ function GetFavoritesWorkouts($userUsername)
     }
 }
 
-function GetFavoritesCategories($userUsername, $woName)
+function GetFavoritesExercises($userUsername, $woName)
 {
     global $username;
     global $password;
@@ -58,30 +58,9 @@ function GetFavoritesCategories($userUsername, $woName)
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT DISTINCT w.MuscleTrained FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name INNER JOIN exercise as e ON w.exerciseName = e.Name WHERE Fw.UserName = :userUsername AND w.Name = :woName';
+        $sql = 'SELECT DISTINCT * FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name WHERE Fw.UserName = :userUsername AND w.Name = :woName';
         $sth = $conn->prepare($sql);  
         $sth->execute([':userUsername' => $userUsername, ':woName' => $woName]);
-
-        $categories = $sth->fetchAll(PDO::FETCH_OBJ);
-        return $categories;
-        
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-}
-
-function GetFavoritesExercises($userUsername, $catName)
-{
-    global $username;
-    global $password;
-    global $connstring;
-    include '../php classes/FavoriteWorkout.php';
-    try{
-
-        $conn = new PDO($connstring,$username, $password);
-        $sql = 'SELECT DISTINCT w.ExerciseName FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name WHERE Fw.UserName = :userUsername AND w.MuscleTrained = :catName';
-        $sth = $conn->prepare($sql);  
-        $sth->execute([':userUsername' => $userUsername, ':catName' => $catName]);
 
         $exercises = $sth->fetchAll(PDO::FETCH_OBJ);
         return $exercises;
