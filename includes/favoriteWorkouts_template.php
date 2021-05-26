@@ -28,7 +28,7 @@ function GetFavoriteWorkoutDetails($userUsername, $workoutName)
     }
 }
 
-function GetFavoritesWorkoutCategories($userUsername)
+function GetFavoritesWorkouts($userUsername)
 {
     global $username;
     global $password;
@@ -40,6 +40,27 @@ function GetFavoritesWorkoutCategories($userUsername)
         $sql = 'SELECT DISTINCT Fw.Name FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name WHERE Fw.UserName = :userUsername';
         $sth = $conn->prepare($sql);
         $sth->execute([':userUsername' => $userUsername]);
+
+        $workouts = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $workouts;
+        
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function GetFavoritesCategories($userUsername, $woName)
+{
+    global $username;
+    global $password;
+    global $connstring;
+    include '../php classes/FavoriteWorkout.php';
+    try{
+
+        $conn = new PDO($connstring,$username, $password);
+        $sql = 'SELECT DISTINCT w.MuscleTrained FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name INNER JOIN exercise as e ON w.exerciseName = e.Name WHERE Fw.UserName = :userUsername AND w.Name = :woName';
+        $sth = $conn->prepare($sql);  
+        $sth->execute([':userUsername' => $userUsername, ':woName' => $woName]);
 
         $categories = $sth->fetchAll(PDO::FETCH_OBJ);
         return $categories;
@@ -58,9 +79,8 @@ function GetFavoritesExercises($userUsername, $catName)
     try{
 
         $conn = new PDO($connstring,$username, $password);
-        'SELECT DISTINCT * FROM favoriteworkout as Fw INNER JOIN exercise as e ON Fw.Name = e.Name WHERE Fw.UserName = :userUsername AND e.MuscleTrained = :catName';
-        $sth = $conn->prepare($sql);
-        
+        $sql = 'SELECT DISTINCT w.ExerciseName FROM favoriteworkout as Fw INNER JOIN workout as w ON Fw.Name = w.Name WHERE Fw.UserName = :userUsername AND w.MuscleTrained = :catName';
+        $sth = $conn->prepare($sql);  
         $sth->execute([':userUsername' => $userUsername, ':catName' => $catName]);
 
         $exercises = $sth->fetchAll(PDO::FETCH_OBJ);

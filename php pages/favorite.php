@@ -44,7 +44,7 @@ $categories = GetFavoritesCategories($user);
     </div>
 
     <div class="grid-container2">
-
+        <div class="subheader">Showing all categories</div>
         <!--Populate the categorie page with all the categories-->
         <?php
         foreach ($categories as $value) { ?>
