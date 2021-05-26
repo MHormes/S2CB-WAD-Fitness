@@ -6,8 +6,13 @@ include '../includes/exercise_template.php';
 $catName = $_SESSION['catName'];
 
 if (isset($_POST['btnConfirmCreate'])) {
-    CreateNewExercise($_POST['exName'], $_SESSION['catName'], $_POST['reps'], $_POST['sets'], $_POST['timeDuration']);
-    header('Location: selectedCategorie.php?catName=' . $catName);
+    if ($_SESSION['catName'] == "input below") {
+        CreateNewExercise($_POST['exName'], $_POST['newCatName'], $_POST['reps'], $_POST['setsnumber'], $_POST['timeDuration']);
+        header('Location: selectedCategorie.php?catName=' . $_POST['newCatName']);
+    } else {
+        CreateNewExercise($_POST['exName'], $_SESSION['catName'], $_POST['reps'], $_POST['setsnumber'], $_POST['timeDuration']);
+        header('Location: selectedCategorie.php?catName=' . $catName);
+    }
 }
 ?>
 
@@ -58,6 +63,11 @@ if (isset($_POST['btnConfirmCreate'])) {
             <form action="" method="post">
                 <h1>Name of the exercise:</h1></br>
                 <input type="text" name="exName" id="exName" required>
+                <?php if ($catName == "input below") {
+                ?>
+                    <h1>Categorie of the exercise:</h1></br>
+                    <input type="text" name="newCatName" id="newCatName" required>
+                <?php } ?>
                 <h1>Recommended amount of Repetitions:</h1></br>
                 <input type="number" name="reps" id="reps" required>
                 <h1>Recommended amount of sets:</h1></br>

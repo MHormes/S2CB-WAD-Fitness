@@ -2,6 +2,11 @@
 session_start();
 include '../includes/categories_template.php';
 $categories = GetAllCategories();
+$_SESSION['catName'] = "input below";
+if (isset($_SESSION['loggedin'])) {
+    include_once '../includes/user_template.php';
+    $user = GetUserDetails($_SESSION['Username']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +49,11 @@ $categories = GetAllCategories();
 
     <div class="grid-container2">
 
+<div class="subheader">Showing all categories. Choose one to see the exercises part of it.
+            <?php if (isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?>
+                <form action="createExercise.php" method="post"><input class="button" type="submit" name="btnNewExercise" value="Create new exercise for unexisting categorie"></form>
+            <?php } ?>
+        </div>
         <!--Populate the categorie page with all the categories-->
         <?php
 
