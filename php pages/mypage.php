@@ -58,8 +58,8 @@ if (isset($_POST['btnUpdate'])) {
             <a href="favoriteWorkouts.php">
                 <div class="navi">Favorite workouts</div>
             </a>
-            <a href="myinformations.php">
-                <div class="navi">Personal informations</div>
+            <a href="myinformation.php">
+                <div class="navi">Personal information</div>
             </a>
         </div>
     <?php
