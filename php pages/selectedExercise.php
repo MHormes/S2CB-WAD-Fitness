@@ -44,6 +44,11 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
 </head>
 
 <body>
+    <script src="dbTestOnLoad.js" type="text/javascript"></script>
+    <script>
+        TestForDbConn();
+    </script>
+
     <div class="grid-container">
         <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
         <a href="contact.php">
@@ -114,7 +119,7 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
                         </form></br>
                         </br>
                         <form action="#" onsubmit="return false">
-                            <input class="button" type="button" onclick="ConfirmDeleteExercise('<?php echo $exerciseName; ?>', '<?php echo $exercise->GetMuscleTrained();?>')" name="btnDelete" value="Delete exercise">
+                            <input class="button" type="button" onclick="ConfirmDeleteExercise('<?php echo $exerciseName; ?>', '<?php echo $exercise->GetMuscleTrained(); ?>')" name="btnDelete" value="Delete exercise">
                         </form>
                     <?php } ?>
                     <?php if (isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?>
@@ -132,7 +137,7 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="../includes/exercise_scripts.js"></script>
+            <script src="../JavaScript/exercise_scripts.js"></script>
 </body>
 
 </html>

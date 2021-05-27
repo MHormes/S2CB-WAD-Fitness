@@ -74,7 +74,7 @@ $excercises = GetAllExercisesOfAll();
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="../includes/workout_scripts.js"></script>
+        <script src="../JavaScript/workout_scripts.js"></script>
 </body>
 
 </html>
