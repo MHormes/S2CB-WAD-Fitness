@@ -15,6 +15,6 @@ function SendMessage($name, $email, $message, $userIsLogged)
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }

@@ -38,7 +38,7 @@ function GetAllWorkouts()
 
         return $workouts;
     } catch (PDOException $e) {
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -60,7 +60,7 @@ function GetSelectedWorkout($woName)
         $workout = new Workout($result[0]->Name, $result[0]->MuscleTrained, $result[0]->exerciseName);
         return $workout;
     } catch (PDOException $e) {
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -79,7 +79,7 @@ function GetAllExercisesForWorkout($woName)
 
         return $exercises;
     } catch (PDOException $e) {
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -98,7 +98,7 @@ function CreateNewWorkout($woName, $muscleTrained, $exerciseName)
             $sth->execute([':woName' => $woName, ':muscleTrained' => $muscleTrained, ':exerciseName' => $value]);
             $conn = null;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            echo false;
         }
 }
 
@@ -113,6 +113,6 @@ function RemoveWorkout($woName)
         $sth = $conn->prepare($sql);
         $sth->execute([':woName' => $woName]);
     } catch (PDOException $e) {
-        echo $e->getMessage();
+        echo false;
     }
 }

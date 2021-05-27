@@ -23,7 +23,7 @@ function GetAllExercises($catName)
 
         return $exercises;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -39,7 +39,7 @@ function GetAllExercisesOfAll(){
 
         return $exercises;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -62,7 +62,7 @@ function GetChosenExercise($exName)
         $exercise = new Exercise($result[0]->Name, $result[0]->MuscleTrained, $result[0]->Reps, $result[0]->SetsNumber, $result[0]->Duration);
         return $exercise;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -79,7 +79,7 @@ function CreateNewExercise($exName, $muscleTrained, $exReps, $exSets, $timeDurat
         $conn = null;
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -95,7 +95,7 @@ function UpdateExercise($exerciseName, $muscleTrained, $exReps, $exSets, $timeDu
         $sth->execute([':muscleTrained' => $muscleTrained, ':setsnumber' => $exSets, ':reps' => $exReps, ':timeDuration' => $timeDuration, ':exerciseName' => $exerciseName]);
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -111,6 +111,6 @@ function DeleteExercise($exName){
         $sth->execute([':exName' => $exName]);
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }

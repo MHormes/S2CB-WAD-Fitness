@@ -24,7 +24,7 @@ function GetFavoriteWorkoutDetails($userUsername, $workoutName)
          return $newFavorite;   
         }
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -45,7 +45,7 @@ function GetFavoritesWorkouts($userUsername)
         return $workouts;
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -66,7 +66,7 @@ function GetFavoritesExercises($userUsername, $woName)
         return $exercises;
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -84,7 +84,7 @@ function NewFavoriteWorkout($userUsername, $workoutName)
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -102,6 +102,6 @@ function RemoveFavoriteWorkout($userUsername, $workoutName)
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }

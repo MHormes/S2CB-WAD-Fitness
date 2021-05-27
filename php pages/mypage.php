@@ -27,31 +27,7 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
-        <a href="contact.php">
-            <div class="navi">Contact</div>
-        </a>
-        <a href="workoutPage.php">
-            <div class="navi">Pre-made workouts</div>
-        </a>
-        <a href="categories.php">
-            <div class="navi">Categories</div>
-        </a>
-        <a href="mypage.php">
-            <div class="navi">My page</div>
-        </a>
-
-        <?php if (isset($_SESSION['loggedin'])) : ?>
-            <a href="logout.php">
-                <div class="navi">Logout</div>
-            </a>
-        <?php else : ?>
-            <a href="login.php">
-                <div class="navi">Login</div>
-            </a>
-        <?php endif; ?>
-    </div>
+    <?php include "../resources/navigation.php"; ?>
     <?php
     if (isset($_SESSION['Username'])) {
         echo "Welcome to your own page, " . $_SESSION['Username']; ?>
@@ -66,7 +42,7 @@ if (isset($_SESSION['loggedin'])) {
                 </a>
             <?php } ?>
             <a href="myinformation.php">
-                    <div class="navi">Personal information</div>
+                <div class="navi">Personal information</div>
             </a>
         </div>
     <?php

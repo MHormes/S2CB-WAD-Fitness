@@ -17,7 +17,7 @@ function GetUserDetails($userUsername)
         $newUser = new User($result[0]->FirstName, $result[0]->SecondName, $result[0]->UserName, $result[0]->Password, $result[0]->Email, $result[0]->Role);
         return $newUser;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -37,7 +37,7 @@ function UpdateAccount($oldUsername, $firstName, $secondName, $uusername, $upass
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -74,7 +74,7 @@ function loginAccount($userusername, $userpassword)
         }
 
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -92,7 +92,7 @@ function CreateAccount($firstName, $secondName, $uusername, $upassword, $email)
 
         $conn = null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
     $_SESSION['UsernameReg'] = $_POST["username"];
     header('Location: login.php');

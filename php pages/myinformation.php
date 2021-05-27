@@ -22,30 +22,7 @@ if (isset($_POST['btnUpdate'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
-        <a href="contact.php">
-            <div class="navi">Contact</div>
-        </a>
-        <a href="workoutPage.php">
-            <div class="navi">Pre-made workouts</div>
-        </a>
-        <a href="categories.php">
-            <div class="navi">Categories</div>
-        </a>
-        <a href="mypage.php">
-            <div class="navi">My page</div>
-        </a>
-
-        <?php if (isset($_SESSION['loggedin'])) : ?>
-            <a href="logout.php">
-                <div class="navi">Logout</div>
-            </a>
-        <?php else : ?>
-            <a href="login.php">
-                <div class="navi">Login</div>
-            </a>
-        <?php endif; ?>
+    <?php include "../resources/navigation.php"; ?>
     </div>
     <?php
     if (isset($_SESSION['Username'])) {
@@ -84,7 +61,7 @@ if (isset($_POST['btnUpdate'])) {
         echo "To see your page please log-in";
     }
     ?>
-    <script src="../includes/warning_leaving_page.js"></script>
+    <script src="../JavaScript/warning_leaving_page.js"></script>
 </body>
 
 </html>

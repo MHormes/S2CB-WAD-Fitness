@@ -24,7 +24,7 @@ function GetFavoriteDetails($userUsername, $exName)
          return $newFavorite;   
         }
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -45,7 +45,7 @@ function GetFavoritesCategories($userUsername)
         return $categories;
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -67,7 +67,7 @@ function GetFavoritesExercises($userUsername, $catName)
         return $exercises;
         
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -86,7 +86,7 @@ function NewFavorite($userUsername, $exName)
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }
 
@@ -105,6 +105,6 @@ function RemoveFavorite($userUsername, $exName)
 
         $conn= null;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        echo false;
     }
 }

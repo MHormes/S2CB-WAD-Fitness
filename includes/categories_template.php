@@ -16,6 +16,6 @@ function GetAllCategories()
 
         return $categories;
     }catch(PDOException $e){
-        echo $e->getMessage();
+        return false;
     }
 }

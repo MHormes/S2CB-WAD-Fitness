@@ -46,31 +46,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="header" onClick='location.href = "index.php";'>AM Fitness</div>
-        <a href="contact.php">
-            <div class="navi">Contact</div>
-        </a>
-        <a href="workoutPage.php">
-            <div class="navi">Pre-made workouts</div>
-        </a>
-        <a href="categories.php">
-            <div class="navi">Categories</div>
-        </a>
-        <a href="mypage.php">
-            <div class="navi">My page</div>
-        </a>
-
-        <?php if (isset($_SESSION['loggedin'])) : ?>
-            <a href="logout.php">
-                <div class="navi">Logout</div>
-            </a>
-        <?php else : ?>
-            <a href="login.php">
-                <div class="navi">Login</div>
-            </a>
-        <?php endif; ?>
-    </div>
+    <?php include "../resources/navigation.php"; ?>
 
     <!--View for udating a workout-->
     <?php if (isset($_SESSION['editModeWorkout'])) { ?>
@@ -142,7 +118,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
             <script src="../JavaScript/workout_scripts.js"></script>
-           
+
 </body>
 
 </html>
