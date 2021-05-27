@@ -74,6 +74,7 @@ if (isset($_POST['btnRegister'])) {
             </form>
         </div>
     </section>
+    <script src="../includes/warning_leaving_page.js"></script>
 </body>
 
 </html>
