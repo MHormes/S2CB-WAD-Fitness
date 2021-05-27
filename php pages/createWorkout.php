@@ -51,13 +51,13 @@ $excercises = GetAllExercisesOfAll();
     <div class="grid-container-content">
         <div class="subheader">Create a new workout</div>
         <div class="content-information">
-            <form action="workoutPage.php" onsubmit="CreateNewWorkout();">
+            <form action="#" onsubmit="return false">
                 <h1>Name of the workout:</h1></br>
                 <input type="text" name="woName" id="woName" required>
                 <h1>Muscle group trained:</h1></br>
                 <input type="text" name="muscleTrained" id="muscleTrained" required>
                 </br></br>
-                <input class="button" id="buttonConfirmWO" type="submit" name="buttonConfirmWO" value="Confirm new workout">
+                <input class="button" id="buttonConfirmWO" type="submit" onclick="CreateNewWorkout();" name="buttonConfirmWO" value="Confirm new workout">
             </form>
             <div class="grid-container2">
                 <!--Populate the specific categorie page with all the exercises-->

@@ -1,5 +1,5 @@
-function ConfirmDelete($woName){
-    if(confirm("Are you sure you want to delete this page?")){
+function ConfirmDeleteWorkout($woName){
+    if(confirm("Are you sure you want to delete this workout?")){
         AjaxCallToRemoveWorkout($woName);
         window.location.replace("../php pages/workoutPage.php");
     }else{
@@ -30,6 +30,8 @@ function CreateNewWorkout() {
       selectedExercise.push(checkbox.id);
     });
     ajaxFunctionForCreation(selectedExercise);
+    window.location.replace("../php pages/workoutPage.php");
+    
   }
   
   function ajaxFunctionForCreation(exerciseArray) {

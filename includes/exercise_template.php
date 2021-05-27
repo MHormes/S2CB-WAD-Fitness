@@ -1,5 +1,13 @@
 <?php
 include '../includes/connection_template.php';
+
+if(isset($_POST['actionToPerform'])){
+    if($_POST['actionToPerform'] == 'Delete'){
+        $exName = $_POST['exerciseName'];
+        DeleteExercise($exName);
+    }
+}
+
 function GetAllExercises($catName)
 {
     global $username;

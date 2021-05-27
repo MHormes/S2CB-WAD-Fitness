@@ -125,7 +125,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
                     <?php } ?>
                     <?php if (isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?>
                         <form action="#" method="post"><input class="button" type="submit" name="btnUpdateWorkout" value="Update workout"></form>
-                        <form action="#" onsubmit="return false"><input class="button" type="button" onclick="ConfirmDelete('<?php echo $woName ?>');" name="btnRemoveWorkout" value="Remove workout"></form>
+                        <form action="#" onsubmit="return false"><input class="button" type="button" onclick="ConfirmDeleteWorkout('<?php echo $woName ?>');" name="btnRemoveWorkout" value="Remove workout"></form>
                     <?php } ?>
                 </div>
                 <?php

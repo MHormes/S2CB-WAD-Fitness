@@ -16,7 +16,9 @@ if (isset($_POST['actionToPerform'])) {
         $exerciseNameGet = $_POST['selectedExcerciseArray'];
 
         RemoveWorkout($woNameGet);
-        unset($_SESSION['editModeWorkout']);
+        if (isset($_SESSION['editModeWorkout'])) {
+            unset($_SESSION['editModeWorkout']);
+        }
         CreateNewWorkout($woNameGet, $muscleTrainedGet, $exerciseNameGet);
     }
 }

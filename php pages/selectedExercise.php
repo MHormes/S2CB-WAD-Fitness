@@ -5,6 +5,7 @@ include '../includes/favorite_template.php';
 session_start();
 $_SESSION['exName'] = $_GET['exName'];
 $exerciseName = $_SESSION['exName'];
+$exercise = GetChosenExercise($exerciseName);
 global $userLogged;
 
 if (isset($_SESSION['loggedin'])) {
@@ -12,18 +13,13 @@ if (isset($_SESSION['loggedin'])) {
     $userLogged = $_SESSION['Username'];
     $user = GetUserDetails($_SESSION['Username']);
 }
-if (isset($_POST['btnDelete'])) {
-    DeleteExercise($exerciseName);
-    header("Location: categories.php");
-} else if (isset($_POST['btnUpdate'])) {
+
+if (isset($_POST['btnUpdate'])) {
     $_SESSION['editMode'] = "true";
-    $exercise = GetChosenExercise($exerciseName);
 } else if (isset($_POST['btnConfirmUpdate'])) {
     unset($_SESSION['editMode']);
     UpdateExercise($exerciseName, $_POST['muscleTrained'], $_POST['reps'], $_POST['setsnumber'], $_POST['timeDuration']);
-    $exercise = GetChosenExercise($exerciseName);
 } else {
-    $exercise = GetChosenExercise($exerciseName);
     unset($_SESSION['editMode']);
 }
 if (isset($_POST['btnAddToFavorites'])) {
@@ -113,10 +109,12 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
                     <h1><?php echo "Estimated duration of the exercise: " . $exercise->GetTimeDuration() . " minutes"; ?></h1></br>
                     <!--If a admin is logged in, Show update and delete button-->
                     <?php if (isset($_SESSION['loggedin']) && $user->GetRole() == 'admin') { ?>
-                        <form action="" method="post">
-                            <input class="button" type="submit" name="btnUpdate" value="Update exercise"></br>
-                            </br>
-                            <input class="button" type="submit" name="btnDelete" value="Delete exercise(Deletes the exercise without any confirmation)">
+                        <form action="#" method="post">
+                            <input class="button" type="submit" name="btnUpdate" value="Update exercise">
+                        </form></br>
+                        </br>
+                        <form action="#" onsubmit="return false">
+                            <input class="button" type="button" onclick="ConfirmDeleteExercise('<?php echo $exerciseName; ?>', '<?php echo $exercise->GetMuscleTrained();?>')" name="btnDelete" value="Delete exercise">
                         </form>
                     <?php } ?>
                     <?php if (isset($_SESSION['loggedin']) && $user->GetRole() != 'admin') { ?>
@@ -131,6 +129,10 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
                 <?php } ?>
                 </div>
             </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="../includes/exercise_scripts.js"></script>
 </body>
 
 </html>
