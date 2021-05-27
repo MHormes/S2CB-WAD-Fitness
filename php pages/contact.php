@@ -112,6 +112,7 @@ if (isset($_POST['btnSend'])) {
     <?php
     }
     ?>
+    <script src="../includes/warning_leaving_page.js"></script>
 </body>
 
 </html>

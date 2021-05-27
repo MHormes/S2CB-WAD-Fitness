@@ -84,6 +84,7 @@ if (isset($_POST['btnUpdate'])) {
         echo "To see your page please log-in";
     }
     ?>
+    <script src="../includes/warning_leaving_page.js"></script>
 </body>
 
 </html>
