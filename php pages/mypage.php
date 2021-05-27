@@ -7,6 +7,11 @@ if (isset($_POST['btnUpdate'])) {
     header('Location: mypage.php');
     exit();
 }
+
+if (isset($_SESSION['loggedin'])) {
+    include_once '../includes/user_template.php';
+    $user = GetUserDetails($_SESSION['Username']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,14 +57,16 @@ if (isset($_POST['btnUpdate'])) {
         echo "Welcome to your own page, " . $_SESSION['Username']; ?>
         <div class="grid-container3">
             <div class="subheader">My page</div>
-            <a href="favorite.php">
-                <div class="navi">Favorite exercises</div>
-            </a>
-            <a href="favoriteWorkouts.php">
-                <div class="navi">Favorite workouts</div>
-            </a>
+            <?php if ($user->GetRole() == 'member') { ?>
+                <a href="favorite.php">
+                    <div class="navi">Favorite exercises</div>
+                </a>
+                <a href="favoriteWorkouts.php">
+                    <div class="navi">Favorite workouts</div>
+                </a>
+            <?php } ?>
             <a href="myinformation.php">
-                <div class="navi">Personal information</div>
+                    <div class="navi">Personal information</div>
             </a>
         </div>
     <?php
