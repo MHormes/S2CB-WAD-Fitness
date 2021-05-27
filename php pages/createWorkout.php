@@ -51,7 +51,7 @@ $excercises = GetAllExercisesOfAll();
     <div class="grid-container-content">
         <div class="subheader">Create a new workout</div>
         <div class="content-information">
-            <form action="#" onsubmit="return false">
+            <form action="workoutPage.php" onsubmit="CreateNewWorkout();">
                 <h1>Name of the workout:</h1></br>
                 <input type="text" name="woName" id="woName" required>
                 <h1>Muscle group trained:</h1></br>
@@ -72,33 +72,9 @@ $excercises = GetAllExercisesOfAll();
 
             </div>
         </div>
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#buttonConfirmWO").click(function() {
-                    var selectedExercise = [];
-                    $(':checkbox[name="exercise"]:checked').each(function() {
-                        selectedExercise.push(this.id);
-                        console.log(selectedExercise);
-                    });
-                    $.ajax({
-                        type: 'post',
-                        url: "../includes/workout_create_template.php",
-                        data: {
-                            workoutName: $("[id$='woName']").val(),
-                            muscleTrained: $("[id$='muscleTrained']").val(),
-                            selectedExcerciseArray: selectedExercise
-                        },
-                        success: function(result) {
-                            console.log(result);
-                        }
-                    });
-                    window.location.replace('workoutPage.php');
-                });
-            });
-        </script>
+        <script src="../includes/workout_scripts.js"></script>
 </body>
 
 </html>
