@@ -52,7 +52,7 @@ if (isset($_POST['btnSend'])) {
                         <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Send" name="btnSend">
+                        <input type="submit" value="Send" name="btnSend" onclick="IgnoreBeforeUnload();">
                     </div>
                 </form>
             </div>

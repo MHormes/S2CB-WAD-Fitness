@@ -52,7 +52,7 @@ if (isset($_POST['btnRegister'])) {
                     <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="email" id="email" placeholder="Enter email" required>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Sign up" name="btnRegister">
+                    <input type="submit" value="Sign up" onclick="IgnoreBeforeUnload();" name="btnRegister">
                 </div>
             </form>
         </div>

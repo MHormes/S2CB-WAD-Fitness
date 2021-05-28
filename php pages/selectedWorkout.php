@@ -59,7 +59,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
                     <h1>Muscle group trained:</h1></br>
                     <input type="text" name="muscleTrained" id="muscleTrained" value="<?php echo $workout->GetMuscleTrained() ?>" required>
                     </br></br>
-                    <input class="button" id="btnUpdateWorkoutConfirm" type="submit" name="btnUpdateWorkoutConfirm" value="Confirm workout update">
+                    <input class="button" id="btnUpdateWorkoutConfirm" type="submit" name="btnUpdateWorkoutConfirm" onclick="IgnoreBeforeUnload();" value="Confirm workout update">
                     </br></br>
                 </form>
                 <div class="grid-container2">
@@ -85,6 +85,7 @@ if (isset($_POST['btnRemoveFromFavoriteWorkouts'])) {
                     ?>
                 </div>
             </div>
+            <script src="../JavaScript/warning_leaving_page.js"></script>
         <?php } else { ?>
 
             <div class="grid-container2">

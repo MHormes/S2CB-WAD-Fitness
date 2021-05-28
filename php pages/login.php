@@ -72,7 +72,7 @@ if (isset($_POST['btnLogin'])) {
             ?>
         </div>
     </section>
-    <script src="../JavaScript/warning_leaving_page.js"></script>
+    
 </body>
 
 </html>

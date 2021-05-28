@@ -32,7 +32,7 @@ $excercises = GetAllExercisesOfAll();
                 <h1>Muscle group trained:</h1></br>
                 <input type="text" name="muscleTrained" id="muscleTrained" required>
                 </br></br>
-                <input class="button" id="buttonConfirmWO" type="submit" onclick="CreateNewWorkout();" name="buttonConfirmWO" value="Confirm new workout">
+                <input class="button" id="buttonConfirmWO" type="submit" onclick="IgnoreBeforeUnload(); CreateNewWorkout();" name="buttonConfirmWO" value="Confirm new workout">
             </form>
             <div class="grid-container2">
                 <!--Populate the specific categorie page with all the exercises-->
@@ -50,6 +50,7 @@ $excercises = GetAllExercisesOfAll();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="../JavaScript/workout_scripts.js"></script>
+        <script src="../JavaScript/warning_leaving_page.js"></script>
 </body>
 
 </html>

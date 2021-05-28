@@ -68,10 +68,10 @@ if (isset($_POST['btnRemoveFromFavorites'])) {
                     <h1>Estimated duration of the exercise (in minutes):</h1></br>
                     <input type="number" name="timeDuration" id="timeDuration" value=<?php echo $exercise->GetTimeDuration(); ?> required>
                     </br></br>
-                    <input class="button" type="submit" name="btnConfirmUpdate" value="Confirm exercise update">
+                    <input class="button" type="submit" name="btnConfirmUpdate" onclick="IgnoreBeforeUnload();" value="Confirm exercise update">
                     </br></br>
                 </form>
-
+                <script src="../JavaScript/warning_leaving_page.js"></script>
                 <!--Standard view for everyone-->
             <?php } else { ?>
                 <a href="">

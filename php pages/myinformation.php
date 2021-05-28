@@ -52,7 +52,7 @@ if (isset($_POST['btnUpdate'])) {
                     <input type="text" pattern="^[A-z0-9._-]+@[A-z0-9._-]+.[a-z]+" name="uemail" id="uemail" value=<?php echo $newUser->GetEmail(); ?> required>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Update" name="btnUpdate">
+                    <input type="submit" value="Update" onclick="IgnoreBeforeUnload();" name="btnUpdate">
                 </div>
             </form>
         </div>

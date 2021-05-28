@@ -51,9 +51,11 @@ if (isset($_POST['btnConfirmCreate'])) {
                 <input type="number" name="timeDuration" id="timeDuration" required>
                 </br></br>
 
-                <input class="button" type="submit" name="btnConfirmCreate" value="Confirm new exercise">
+                <input class="button" type="submit" name="btnConfirmCreate" onclick="IgnoreBeforeUnload();" value="Confirm new exercise">
             </form>
         </div>
+
+        <script src="../JavaScript/warning_leaving_page.js"></script>
 </body>
 
 </html>
