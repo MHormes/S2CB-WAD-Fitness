@@ -28,6 +28,6 @@
     <?php include '../includes/dbConnTest.php';
     if (!testDBConn()) {
         echo '<script language="javascript">';
-        echo 'confirm("It seems like there is no connection to our DB. Continuing will result in an incorrect displayed webpage")';
+        echo 'if(confirm("It seems like there is no connection to our DB. You will be redirected")){ window.location.replace("../php pages/noDBConn.php"); } else{window.location.replace("../php pages/noDBConn.php");} ';
         echo '</script>';
     } ?>

@@ -1,61 +1,55 @@
 /*Rows for editing/adding exercises*/
 .row {
-    width: 100px;
-    margin: 0 auto;
-    display: inline;
+  width: 100px;
+  margin: 0 auto;
+  display: inline;
 }
 
 /*Grid used for displaying content*/
-.grid-container-content{
-    display: grid;
-    grid-template-areas:
-        'subheader subheader subheader subheader'
-        'video video info info';
-    grid-template-rows: auto;
-    grid-row-gap: 10px;
-    grid-column-gap: 10px;
-    background-color: #33658A;
-    text-align: center;
-    padding: 20px;
+.grid-container-content {
+  display: grid;
+  grid-template-areas:
+    "subheader subheader subheader subheader"
+    "video video info info";
+  grid-template-rows: auto;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  background-color: #33658a;
+  text-align: center;
+  padding: 20px;
 }
 
-.content-video{
+.content-video {
+  grid-area: video;
+  background-color: #2f4858;
+  color: #86bbd8;
+  padding: 20px;
+  width: 60vw;
+}
+
+.content-information {
+  grid-area: info;
+  background-color: #2f4858;
+  padding: 20px;
+  width: 35vw;
+  font-size: 1vw;
+  color: #86bbd8;
+}
+
+@media screen and (max-width: 750px) {
+  .content-video {
     grid-area: video;
-    background-color: #2F4858;
-    color: #86BBD8;
+    background-color: #2f4858;
+    color: #86bbd8;
     padding: 20px;
     width: 60vw;
-}
+  }
 
-.content-information{
-    
+  .content-information {
     grid-area: info;
-    background-color: #2F4858;
+    background-color: #2f4858;
     padding: 20px;
     width: 35vw;
-    font-size: 1vw;
-    color: #86BBD8;
-}
-
-
-@media screen and (max-width: 750px){
-
-    .content-video{
-        grid-area: video;
-        background-color: #2F4858;
-        color: #86BBD8;
-        padding: 20px;
-        width: 60vw;
-    }
-    
-    .content-information{
-        
-        grid-area: info;
-        background-color: #2F4858;
-        padding: 20px;
-        width: 35vw;
-        font-size: 1.5vw;
-    }
-
-
+    font-size: 1.5vw;
+  }
 }
