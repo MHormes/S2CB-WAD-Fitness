@@ -1,9 +1,13 @@
 <?php
 session_start();
+global $isLoggedIn;
 
 include '../includes/user_template.php';
 if (isset($_POST['btnLogin'])) {
     loginAccount($_POST["username"], $_POST["password"]);
+    echo '<script type="text/javascript">
+    showSnackbar();
+    </script>';
     exit;
 }
 ?>
@@ -17,6 +21,7 @@ if (isset($_POST['btnLogin'])) {
     <title>AM Fitness</title>
     <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/snackbar.css">
 </head>
 
 <body>
@@ -52,7 +57,7 @@ if (isset($_POST['btnLogin'])) {
                     <input type="password" name="password" id="password" placeholder="Enter password" required>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Login" name="btnLogin">
+                    <input type="submit" value="Login" name="btnLogin" onclick=showSnackbar();>
                 </div>
                 <a href="registration.php">
                     <div class="row">
@@ -73,6 +78,10 @@ if (isset($_POST['btnLogin'])) {
         </div>
     </section>
     
+    <!-- The actual snackbar -->
+    <div id="snackbar">Login successful!</div>
+    <script src="../JavaScript/snackbar.js"></script>
+
 </body>
 
 </html>

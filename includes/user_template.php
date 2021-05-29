@@ -67,10 +67,12 @@ function loginAccount($userusername, $userpassword)
             $_SESSION['Username'] = $_POST["username"];
             setcookie('loginMessage', "", 1);
             header('Location: mypage.php');
+            return true;
         } 
         else {
             setcookie('loginMessage', "User not found");
             header('Location: login.php');
+            return false;
         }
 
     }catch(PDOException $e){
