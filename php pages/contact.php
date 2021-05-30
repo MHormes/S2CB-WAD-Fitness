@@ -9,7 +9,7 @@ if (isset($_POST['btnSend'])) {
     } else {
         SendMessage($_POST['bName'], $_POST['bEmail'], $_POST['bMessage'], 'false');
     }
-    header('Location: index.php');
+    header('Location: index.php', true, 301);
     exit();
 }
 ?>
@@ -41,7 +41,7 @@ if (isset($_POST['btnSend'])) {
                     <!-- inserting name, email, message -->
                     <div class="row">
                         <label for="bName">Full name</label>
-                        <input type="text" name="bName" id="bName" value=<?php echo $newUser->GetFirstname() . ' ' . $newUser->GetSecondname(); ?> required>
+                        <input type="text" name="bName" id="bName" value="<?php echo $newUser->GetFirstname() . ' ' . $newUser->GetSecondname(); ?>" required>
                     </div>
                     <div class="row">
                         <label for="bEmail">Email</label>
@@ -49,7 +49,7 @@ if (isset($_POST['btnSend'])) {
                     </div>
                     <div class="row">
                         <label for="bMessage">Message</label>
-                        <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
+                        <input type="message" class="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
                         <input type="submit" value="Send" name="btnSend" onclick="IgnoreBeforeUnload();">
@@ -80,7 +80,7 @@ if (isset($_POST['btnSend'])) {
                         <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Send" name="btnSend">
+                        <input type="submit" value="Send" name="btnSend" onclick="IgnoreBeforeUnload();">
                     </div>
                 </form>
             </div>
