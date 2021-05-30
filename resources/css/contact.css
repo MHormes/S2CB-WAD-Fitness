@@ -94,22 +94,22 @@ a {
     padding: 20px;
   }
   h2 {
-    font-size: 4vw;
+    font-size: 5vw;
   }
 
   input[type="button"] {
-    font-size: 2vw;
+    font-size: 3vw;
     float: none;
   }
 
   input[type="submit"] {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 
   input[type="message"],
   input[type="text"],
   select,
   textarea {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 }
