@@ -24,6 +24,7 @@ if (isset($_POST['btnSend'])) {
     <title>AM Fitness</title>
     <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/contact.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/snackbar.css">
 </head>
 
 <body>
@@ -80,7 +81,7 @@ if (isset($_POST['btnSend'])) {
                         <input type="message" name="bMessage" id="bMessage" placeholder="Write us a message" required>
                     </div>
                     <div class="row">
-                        <input type="submit" value="Send" name="btnSend" onclick="IgnoreBeforeUnload();">
+                        <input type="submit" value="Send" name="btnSend" onclick="IgnoreBeforeUnload(); showSnackbar();">
                     </div>
                 </form>
             </div>
@@ -89,6 +90,11 @@ if (isset($_POST['btnSend'])) {
     }
     ?>
     <script src="../JavaScript/warning_leaving_page.js"></script>
+
+    <!-- The actual snackbar -->
+    <div id="snackbar">Thanks for contacting us!</div>
+    <script src="../JavaScript/snackbar.js"></script>
+
 </body>
 
 </html>

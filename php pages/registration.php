@@ -19,6 +19,7 @@ if (isset($_POST['btnRegister'])) {
     <title>AM Fitness</title>
     <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/snackbar.css">
 
 </head>
 
@@ -60,6 +61,18 @@ if (isset($_POST['btnRegister'])) {
         </div>
     </section>
     <script src="../JavaScript/warning_leaving_page.js"></script>
+
+    <!-- The actual snackbar -->
+    <div id="snackbar">Registration unsuccessful!</div>
+    <script src="../JavaScript/snackbar.js"></script>
+
+    <?php
+    if(isset($_SESSION["failed"])){
+        echo '<script type="text/javascript">showSnackbar();</script>';
+        unset($_SESSION["failed"]);
+    }
+    ?>
+    
 </body>
 
 </html>
