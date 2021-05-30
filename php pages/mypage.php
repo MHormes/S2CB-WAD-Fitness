@@ -24,9 +24,11 @@ if (isset($_SESSION['loggedin'])) {
     <title>AM Fitness</title>
     <link rel="stylesheet" type="text/css" href="../resources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/snackbar.css">
 </head>
 
 <body>
+    
     <?php include "../resources/navigation.php"; ?>
     <?php
     if (isset($_SESSION['Username'])) {
