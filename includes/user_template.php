@@ -95,6 +95,7 @@ function CreateAccount($firstName, $secondName, $uusername, $upassword, $email)
         header('Location: login.php');
         $conn = null;
     }catch(PDOException $e){
+        $_SESSION['failed'] = 'true';
         return false;
     }
 }
