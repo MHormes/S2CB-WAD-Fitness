@@ -2,7 +2,9 @@
 session_start();
 include '../includes/user_template.php';
 if (isset($_POST['btnRegister'])) {
-    CreateAccount($_POST['fname'], $_POST['lname'], $_POST['username'], $_POST['password'], $_POST['email']);
+    if(CreateAccount($_POST['fname'], $_POST['lname'], $_POST['username'], $_POST['password'], $_POST['email']) == false){
+        header("Refresh:0");
+    }
     exit();
 }
 ?>

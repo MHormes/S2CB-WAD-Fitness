@@ -70,7 +70,7 @@ function loginAccount($userusername, $userpassword)
             return true;
         } 
         else {
-            setcookie('loginMessage', "User not found");
+            setcookie('loginMessage', "Login unsucessfull");
             header('Location: login.php');
             return false;
         }
@@ -91,11 +91,10 @@ function CreateAccount($firstName, $secondName, $uusername, $upassword, $email)
         $sql = 'INSERT INTO user VALUES(:firstName, :secondName, :username, :email, :password, :role)';
         $sth = $conn->prepare($sql);
         $sth->execute([':firstName' => $firstName, ':secondName' => $secondName, ':username' => $uusername, ':password' => $upassword, ':email' => $email, ':role' => 'member']);
-
+        $_SESSION['UsernameReg'] = $_POST["username"];
+        header('Location: login.php');
         $conn = null;
     }catch(PDOException $e){
-        echo false;
+        return false;
     }
-    $_SESSION['UsernameReg'] = $_POST["username"];
-    header('Location: login.php');
 }

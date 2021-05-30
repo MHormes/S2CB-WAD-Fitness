@@ -5,9 +5,6 @@ global $isLoggedIn;
 include '../includes/user_template.php';
 if (isset($_POST['btnLogin'])) {
     loginAccount($_POST["username"], $_POST["password"]);
-    echo '<script type="text/javascript">
-    showSnackbar();
-    </script>';
     exit;
 }
 ?>
@@ -57,7 +54,7 @@ if (isset($_POST['btnLogin'])) {
                     <input type="password" name="password" id="password" placeholder="Enter password" required>
                 </div>
                 <div class="row">
-                    <input type="submit" value="Login" name="btnLogin" onclick=showSnackbar();>
+                    <input type="submit" value="Login" name="btnLogin">
                 </div>
                 <a href="registration.php">
                     <div class="row">
@@ -66,22 +63,25 @@ if (isset($_POST['btnLogin'])) {
                 </a>
             </form>
 
+            <!-- The actual snackbar -->
+            <div id="snackbar"><?php echo $_COOKIE['loginMessage']; ?></div>
+            <div id="snackbarReg"><?php if(isset($_SESSION['UsernameReg'])){echo "Thank you for creating an account. You can now login using the password for account: " . $_SESSION['UsernameReg']; } ?></div>
+            <script src="../JavaScript/snackbar.js"></script>
+
             <?php
-            if (isset($_SESSION["UsernameReg"])) {
-                setcookie('loginMessage', "", 1);
-                echo "Thank you for creating an account. You can now login using the password for account:" . $_SESSION['UsernameReg'];
-            }
             if (isset($_COOKIE['loginMessage'])) {
-                echo $_COOKIE['loginMessage'];
+                echo '<script type="text/javascript">showSnackbar();</script>';
+                unset($_SESSION['loginMessage']);
             }
+            
+            if (isset($_SESSION["UsernameReg"])) {
+                echo '<script type="text/javascript">showSnackbarReg();</script>';
+                unset($_SESSION['UsernameReg']);
+            }
+            
             ?>
         </div>
     </section>
-    
-    <!-- The actual snackbar -->
-    <div id="snackbar">Login successful!</div>
-    <script src="../JavaScript/snackbar.js"></script>
-
 </body>
 
 </html>

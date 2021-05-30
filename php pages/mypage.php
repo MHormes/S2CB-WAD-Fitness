@@ -28,11 +28,16 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    
+
     <?php include "../resources/navigation.php"; ?>
+
+    <!-- The actual snackbar -->
+    <div id="snackbar"><?php if(isset($_SESSION['Username'])){ echo "Welcome to your own page, " . $_SESSION['Username'];} else{ echo "To see your page please log-in"; } ?></div>
+    <script src="../JavaScript/snackbar.js"></script>
+
     <?php
     if (isset($_SESSION['Username'])) {
-        echo "Welcome to your own page, " . $_SESSION['Username']; ?>
+        echo '<script type="text/javascript">showSnackbar();</script>'; ?>
         <div class="grid-container3">
             <div class="subheader">My page</div>
             <?php if ($user->GetRole() == 'member') { ?>
@@ -49,7 +54,7 @@ if (isset($_SESSION['loggedin'])) {
         </div>
     <?php
     } else {
-        echo "To see your page please log-in";
+        echo '<script type="text/javascript">showSnackbar();</script>';
     }
     ?>
 </body>

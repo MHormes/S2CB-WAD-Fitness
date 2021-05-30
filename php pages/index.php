@@ -18,7 +18,7 @@ $workouts = GetAllWorkouts();
 </head>
 
 <body>
-    <?php include "../resources/navigation.php";?>
+    <?php include "../resources/navigation.php"; ?>
     <div class="grid-container2">
         <div class="subheader">Pre-made workouts</div>
         <!--Populate the index page with a set of 4 workouts-->
